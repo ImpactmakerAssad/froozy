@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · Tijdlijn: 10 varianten</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --mango:#FFF065; --banapple:#C3D76E; --strawberry:#F6B5C5; --peach:#F9BB7A;
+    --pastel-mango:color-mix(in srgb,var(--mango) 42%,var(--offwhite));
+    --pastel-banapple:color-mix(in srgb,var(--banapple) 42%,var(--offwhite));
+    --pastel-strawberry:color-mix(in srgb,var(--strawberry) 42%,var(--offwhite));
+    --pastel-peach:color-mix(in srgb,var(--peach) 42%,var(--offwhite));
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .lbl{max-width:1180px;margin:0 auto;padding:2.4rem 1.5rem 0.6rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.14em;font-size:.85rem;margin:0;}
+  .lbl p{margin:.3rem 0 0;font-size:.9rem;opacity:.62;}
+  .ver{max-width:1180px;margin:0 auto 2.2rem;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -45px rgba(48,79,66,.5);}
+  .inner{padding:clamp(2rem,4vw,3.4rem) clamp(1.4rem,4vw,3.4rem);}
+  .cap{text-align:center;margin:0 auto clamp(1.6rem,3.5vw,2.6rem);}
+  .cap .k{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;opacity:.7;}
+  .cap .h{font-family:var(--disp);font-weight:400;font-size:clamp(1.7rem,1.1rem+1.7vw,2.7rem);line-height:1.02;margin-top:.4rem;}
+  .cap .lead{font-size:.95rem;line-height:1.55;opacity:.82;max-width:60ch;margin:.7rem auto 0;}
+  h3{margin:0;}
+  img{display:block;}
+
+  /* ============ V1 — HORIZONTALE RAIL (verfijnd) ============ */
+  .v1{background:var(--pastel-peach);}
+  .v1grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.5vw,2.2rem);position:relative;}
+  .v1grid::before{content:"";position:absolute;left:12.5%;right:12.5%;top:calc(clamp(96px,11vw,150px) + 1.6rem);height:2px;background:color-mix(in srgb,var(--groen) 34%,transparent);}
+  .v1col{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
+  .v1circ{width:clamp(96px,11vw,150px);aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px color-mix(in srgb,var(--groen) 26%,transparent),0 20px 36px -20px rgba(48,79,66,.5);background:#fff;}
+  .v1circ img{width:100%;height:100%;object-fit:cover;}
+  .v1node{width:1.1rem;height:1.1rem;border-radius:50%;background:var(--groen);margin-top:1.05rem;}
+  .v1h{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(1.05rem,.9rem+.5vw,1.4rem);margin-top:1rem;}
+  .v1t{font-size:.86rem;line-height:1.5;opacity:.82;max-width:26ch;margin-top:.45rem;}
+
+  /* ============ V2 — VERTICALE ZIGZAG ============ */
+  .v2{background:#fff;}
+  .v2wrap{position:relative;max-width:820px;margin:0 auto;}
+  .v2wrap::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:color-mix(in srgb,var(--groen) 26%,transparent);}
+  .v2row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2.4rem);align-items:center;margin-bottom:clamp(1.4rem,3vw,2.2rem);position:relative;}
+  .v2row:nth-child(even) .v2img{order:2;}
+  .v2img{width:clamp(120px,15vw,190px);aspect-ratio:1;border-radius:20px;overflow:hidden;justify-self:end;box-shadow:0 18px 34px -22px rgba(48,79,66,.5);}
+  .v2row:nth-child(even) .v2img{justify-self:start;}
+  .v2img img{width:100%;height:100%;object-fit:cover;}
+  .v2txt{padding:.2rem .4rem;}
+  .v2row:nth-child(even) .v2txt{order:1;text-align:right;}
+  .v2dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1rem;height:1rem;border-radius:50%;background:var(--groen);box-shadow:0 0 0 5px #fff;}
+  .v2num{font-family:var(--disp);font-size:1.4rem;opacity:.5;}
+  .v2h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.1rem,.9rem+.7vw,1.6rem);margin:.1rem 0 .35rem;}
+  .v2t{font-size:.88rem;line-height:1.5;opacity:.82;}
+
+  /* ============ V3 — EDITORIAL GROTE NUMMERS ============ */
+  .v3{background:var(--pastel-banapple);}
+  .v3grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.6rem,3.5vw,3rem) clamp(2rem,4vw,4rem);}
+  .v3row{display:flex;gap:clamp(1rem,2vw,1.6rem);align-items:flex-start;}
+  .v3num{font-family:var(--head);font-weight:700;font-size:clamp(2.6rem,2rem+2vw,4.4rem);line-height:.8;color:var(--groen);opacity:.28;flex:none;}
+  .v3img{width:clamp(84px,9vw,120px);aspect-ratio:1;border-radius:16px;overflow:hidden;flex:none;box-shadow:0 16px 30px -20px rgba(48,79,66,.5);}
+  .v3img img{width:100%;height:100%;object-fit:cover;}
+  .v3h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.1rem,.95rem+.6vw,1.5rem);}
+  .v3t{font-size:.86rem;line-height:1.5;opacity:.82;margin-top:.35rem;max-width:34ch;}
+
+  /* ============ V4 — PASTEL KLEUR-KAARTEN ============ */
+  .v4{background:var(--offwhite);}
+  .v4grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.9rem,2vw,1.4rem);}
+  .v4card{border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 38px -26px rgba(48,79,66,.5);}
+  .v4img{aspect-ratio:5/4;overflow:hidden;}
+  .v4img img{width:100%;height:100%;object-fit:cover;}
+  .v4b{padding:1.1rem 1.15rem 1.35rem;flex:1;}
+  .v4n{font-family:var(--disp);font-size:1.3rem;opacity:.6;}
+  .v4h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:1.12rem;margin:.1rem 0 .4rem;}
+  .v4t{font-size:.84rem;line-height:1.48;opacity:.85;}
+
+  /* ============ V5 — STROOM MET PIJLEN ============ */
+  .v5{background:#fff;}
+  .v5flow{display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:wrap;}
+  .v5step{flex:1 1 200px;max-width:240px;text-align:center;padding:0 .6rem;}
+  .v5badge{width:clamp(88px,10vw,128px);aspect-ratio:1;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:var(--bg);box-shadow:inset 0 0 0 3px #fff, 0 16px 30px -20px rgba(48,79,66,.5);overflow:hidden;}
+  .v5badge img{width:78%;height:78%;object-fit:cover;border-radius:50%;}
+  .v5n{font-family:var(--head);font-weight:700;font-size:.72rem;letter-spacing:.14em;opacity:.55;margin-top:.7rem;}
+  .v5h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1rem,.9rem+.5vw,1.35rem);margin:.15rem 0 .35rem;}
+  .v5t{font-size:.82rem;line-height:1.45;opacity:.82;}
+  .v5arrow{display:flex;align-items:center;color:color-mix(in srgb,var(--groen) 45%,transparent);font-size:1.6rem;padding-top:clamp(40px,5vw,58px);}
+  /* ============ V6 — TIJD-AS MET VERLOOP ============ */
+  .v6{background:#fff;}
+  .v6ends{display:flex;justify-content:space-between;padding:0 11%;margin:0 0 1rem;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;opacity:.5;}
+  .v6grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.5vw,2.2rem);position:relative;}
+  .v6grid::before{content:"";position:absolute;left:11%;right:11%;top:calc(clamp(84px,9.5vw,124px) + 1.4rem);height:7px;border-radius:99px;background:linear-gradient(90deg,var(--strawberry),var(--peach),var(--banapple),var(--groen));}
+  .v6col{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
+  .v6img{width:clamp(84px,9.5vw,124px);aspect-ratio:1;border-radius:18px;overflow:hidden;box-shadow:0 16px 30px -20px rgba(48,79,66,.5);background:#fff;}
+  .v6img img{width:100%;height:100%;object-fit:cover;}
+  .v6node{width:1rem;height:1rem;border-radius:50%;background:var(--groen);margin-top:1.05rem;box-shadow:0 0 0 4px #fff;}
+  .v6h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.02rem,.9rem+.5vw,1.35rem);margin-top:.9rem;}
+  .v6t{font-size:.84rem;line-height:1.5;opacity:.82;max-width:24ch;margin-top:.4rem;}
+
+  /* ============ V7 — DONKERE GROENE BAND ============ */
+  .v7{background:var(--groen);color:var(--offwhite);}
+  .v7 .cap .h,.v7 .cap .k,.v7 .cap .lead{color:var(--offwhite);}
+  .v7grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.4vw,2rem);}
+  .v7card{text-align:center;display:flex;flex-direction:column;align-items:center;}
+  .v7img{width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,248,231,.14),0 20px 38px -24px rgba(0,0,0,.55);}
+  .v7img img{width:100%;height:100%;object-fit:cover;}
+  .v7n{font-family:var(--disp);font-size:1.5rem;color:var(--mango);margin-top:1rem;}
+  .v7h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.05rem,.9rem+.5vw,1.4rem);margin:.15rem 0 .4rem;}
+  .v7t{font-size:.85rem;line-height:1.5;opacity:.8;max-width:26ch;}
+
+  /* ============ V8 — FULL-BLEED FOTOSTRIP ============ */
+  .v8{background:var(--offwhite);}
+  .v8grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;}
+  .v8panel{position:relative;height:clamp(320px,42vw,460px);border-radius:16px;overflow:hidden;box-shadow:0 24px 44px -28px rgba(48,79,66,.55);}
+  .v8panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .v8panel::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(35,56,47,.94) 6%,rgba(35,56,47,.4) 40%,rgba(35,56,47,0) 68%);}
+  .v8num{position:absolute;top:.7rem;left:1rem;z-index:2;font-family:var(--disp);font-size:2rem;color:var(--offwhite);opacity:.92;}
+  .v8body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.1rem 1.15rem 1.25rem;color:var(--offwhite);}
+  .v8h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.05rem,.9rem+.55vw,1.45rem);margin:0 0 .35rem;}
+  .v8t{font-size:.82rem;line-height:1.45;opacity:.9;}
+
+  /* ============ V9 — GENUMMERDE BADGE-KAARTEN ============ */
+  .v9{background:var(--pastel-mango);}
+  .v9grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.4vw,1.8rem);}
+  .v9card{background:#fff;border-radius:20px;padding:2.4rem 1.15rem 1.4rem;margin-top:2rem;position:relative;text-align:center;box-shadow:0 22px 40px -28px rgba(48,79,66,.5);}
+  .v9badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);width:clamp(56px,6vw,72px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-family:var(--disp);font-size:clamp(1.3rem,1.1rem+.5vw,1.7rem);color:var(--groen);box-shadow:0 0 0 5px #fff,0 12px 22px -12px rgba(48,79,66,.6);}
+  .v9img{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;margin-bottom:.85rem;}
+  .v9img img{width:100%;height:100%;object-fit:cover;}
+  .v9h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.02rem,.9rem+.5vw,1.35rem);margin:0 0 .35rem;}
+  .v9t{font-size:.83rem;line-height:1.48;opacity:.82;}
+
+  /* ============ V10 — SPLIT 50/50 (matcht Natuur) ============ */
+  .v10{background:var(--offwhite);}
+  .v10wrap{display:flex;flex-direction:column;gap:clamp(.9rem,2vw,1.4rem);}
+  .v10row{display:grid;grid-template-columns:1fr 1fr;min-height:clamp(170px,20vw,230px);border-radius:20px;overflow:hidden;box-shadow:0 22px 42px -30px rgba(48,79,66,.5);background:#fff;}
+  .v10img{overflow:hidden;}
+  .v10img img{width:100%;height:100%;object-fit:cover;}
+  .v10row:nth-child(even) .v10img{order:2;}
+  .v10txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(1.2rem,3vw,2.4rem);}
+  .v10n{font-family:var(--disp);font-size:clamp(1.5rem,1.2rem+1vw,2.3rem);opacity:.55;line-height:1;}
+  .v10h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.2rem,1rem+.8vw,1.7rem);margin:.15rem 0 .45rem;}
+  .v10t{font-size:.9rem;line-height:1.55;opacity:.82;max-width:44ch;}
+
+  @media(max-width:820px){
+    .v5arrow{display:none;}
+    .v1grid,.v4grid,.v6grid,.v7grid,.v8grid,.v9grid{grid-template-columns:1fr 1fr;}
+    .v1grid::before,.v6grid::before,.v6ends{display:none;}
+    .v3grid,.v10row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  const STEPS = [
+    { n:'01', k:'Eeuwenoud', img:'/froozy/assets/timeline/eeuwenoud.webp', t:'Fruit is al eeuwenoud rijk aan vitamines en vezels. Maar hoe maken we het nóg onweerstaanbaarder?', accent:'strawberry' },
+    { n:'02', k:'De truc', img:'/froozy/assets/timeline/de-truc.webp', t:'Het begon bij kou: we vroren het fruit diep onder nul, op zoek naar iets verfijnders.', accent:'peach' },
+    { n:'03', k:'De twist', img:'/froozy/assets/timeline/onze-twist.webp', t:'Geen hitte, maar vacuüm dat het kurkdroog trekt. Het water verdwijnt, de crrrunch verschijnt.', accent:'banapple' },
+    { n:'04', k:'Froozy', img:'/froozy/assets/packshots/strawberry-apple.webp', t:'Zo ontstond Froozy: gevriesdroogd fruit in zakjes vol crrrunch. Niets toegevoegd, alles bewaard.', accent:'mango' },
+  ];
+  const cap = `<div class="cap"><div class="k">◆ Geschiedenis</div><div class="h">Eeuwenoud fruit, knapperig nieuw</div><p class="lead">Mensen bewaren fruit al duizenden jaren door het te drogen. Wij verfijnden die kunst: vriesdrogen onttrekt het water zonder hitte — zo blijft alles bewaard en ontstaat de crrrunch.</p></div>`;
+
+  const V1 = `<div class="lbl"><h1>Variant 1 — Horizontale rail (verfijnd)</h1><p>De huidige stijl, strakker: ronde foto's op een tijdas met knooppunten.</p></div>
+    <section class="ver v1"><div class="inner">${cap}<div class="v1grid">${STEPS.map(s=>`
+      <div class="v1col"><div class="v1circ"><img src="${s.img}" alt=""></div><span class="v1node"></span><h3 class="v1h">${s.k}</h3><p class="v1t">${s.t}</p></div>`).join('')}</div></div></section>`;
+
+  const V2 = `<div class="lbl"><h1>Variant 2 — Verticale zigzag</h1><p>Stappen om-en-om langs een centrale tijdlijn — rustig, verhalend.</p></div>
+    <section class="ver v2"><div class="inner">${cap}<div class="v2wrap">${STEPS.map(s=>`
+      <div class="v2row"><div class="v2img"><img src="${s.img}" alt=""></div><span class="v2dot"></span><div class="v2txt"><span class="v2num">${s.n}</span><h3 class="v2h">${s.k}</h3><p class="v2t">${s.t}</p></div></div>`).join('')}</div></div></section>`;
+
+  const V3 = `<div class="lbl"><h1>Variant 3 — Editorial, grote nummers</h1><p>Magazine-gevoel: forse 01–04, foto + tekst in een 2×2 raster.</p></div>
+    <section class="ver v3"><div class="inner">${cap}<div class="v3grid">${STEPS.map(s=>`
+      <div class="v3row"><span class="v3num">${s.n}</span><div class="v3img"><img src="${s.img}" alt=""></div><div><h3 class="v3h">${s.k}</h3><p class="v3t">${s.t}</p></div></div>`).join('')}</div></div></section>`;
+
+  const V4 = `<div class="lbl"><h1>Variant 4 — Pastel kleur-kaarten</h1><p>Elke stap een eigen Froozy-kleur; speels en kleurrijk.</p></div>
+    <section class="ver v4"><div class="inner">${cap}<div class="v4grid">${STEPS.map(s=>`
+      <div class="v4card" style="background:var(--pastel-${s.accent})"><div class="v4img"><img src="${s.img}" alt=""></div><div class="v4b"><span class="v4n">${s.n}</span><h3 class="v4h">${s.k}</h3><p class="v4t">${s.t}</p></div></div>`).join('')}</div></div></section>`;
+
+  const V5 = `<div class="lbl"><h1>Variant 5 — Stroom met pijlen</h1><p>Als een proces: ronde badges verbonden met pijlen, van vroeger naar nu.</p></div>
+    <section class="ver v5"><div class="inner">${cap}<div class="v5flow">${STEPS.map((s,i)=>`
+      <div class="v5step"><div class="v5badge" style="--bg:var(--pastel-${s.accent})"><img src="${s.img}" alt=""></div><div class="v5n">${s.n}</div><h3 class="v5h">${s.k}</h3><p class="v5t">${s.t}</p></div>${i<STEPS.length-1?'<div class="v5arrow">→</div>':''}`).join('')}</div></div></section>`;
+
+  const V6 = `<div class="lbl"><h1>Variant 6 — Tijd-as met verloop</h1><p>Een echte tijdas: kleurverloop van vroeger (roze) naar nu (groen), met markers.</p></div>
+    <section class="ver v6"><div class="inner">${cap}<div class="v6ends"><span>&#9668; eeuwen geleden</span><span>vandaag &#9658;</span></div><div class="v6grid">${STEPS.map(s=>`
+      <div class="v6col"><div class="v6img"><img src="${s.img}" alt=""></div><span class="v6node"></span><h3 class="v6h">${s.k}</h3><p class="v6t">${s.t}</p></div>`).join('')}</div></div></section>`;
+
+  const V7 = `<div class="lbl"><h1>Variant 7 — Donkere groene band</h1><p>Diep Froozy-groen met licht letterwerk; premium en dramatisch.</p></div>
+    <section class="ver v7"><div class="inner">${cap}<div class="v7grid">${STEPS.map(s=>`
+      <div class="v7card"><div class="v7img"><img src="${s.img}" alt=""></div><span class="v7n">${s.n}</span><h3 class="v7h">${s.k}</h3><p class="v7t">${s.t}</p></div>`).join('')}</div></div></section>`;
+
+  const V8 = `<div class="lbl"><h1>Variant 8 — Full-bleed fotostrip</h1><p>Vier hoge foto's met de tekst eroverheen; meeslepend en stoer.</p></div>
+    <section class="ver v8"><div class="inner">${cap}<div class="v8grid">${STEPS.map(s=>`
+      <div class="v8panel"><img src="${s.img}" alt=""><span class="v8num">${s.n}</span><div class="v8body"><h3 class="v8h">${s.k}</h3><p class="v8t">${s.t}</p></div></div>`).join('')}</div></div></section>`;
+
+  const V9 = `<div class="lbl"><h1>Variant 9 — Genummerde badge-kaarten</h1><p>Witte kaarten met een grote gekleurde cijfer-badge die eroverheen valt.</p></div>
+    <section class="ver v9"><div class="inner">${cap}<div class="v9grid">${STEPS.map(s=>`
+      <div class="v9card"><div class="v9badge" style="background:var(--${s.accent})">${s.n}</div><div class="v9img"><img src="${s.img}" alt=""></div><h3 class="v9h">${s.k}</h3><p class="v9t">${s.t}</p></div>`).join('')}</div></div></section>`;
+
+  const V10 = `<div class="lbl"><h1>Variant 10 — Split 50/50 (matcht Natuur-sectie)</h1><p>Grote foto naast tekstvlak, om-en-om — zelfde ritme als de blokken erboven.</p></div>
+    <section class="ver v10"><div class="inner">${cap}<div class="v10wrap">${STEPS.map(s=>`
+      <div class="v10row"><div class="v10img"><img src="${s.img}" alt=""></div><div class="v10txt" style="background:var(--pastel-${s.accent})"><span class="v10n">${s.n}</span><h3 class="v10h">${s.k}</h3><p class="v10t">${s.t}</p></div></div>`).join('')}</div></div></section>`;
+
+  document.getElementById('app').innerHTML = V1 + V2 + V3 + V4 + V5 + V6 + V7 + V8 + V9 + V10;
+</script>
+</body>
+</html>

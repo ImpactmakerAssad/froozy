@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · variant 2 · grote zakken · linkerkolom omgebouwd</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --strawberry:#F6B5C5;
+    --pastel-strawberry:color-mix(in srgb,#F6B5C5 42%,#FFF8E7);
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .lbl{max-width:1680px;margin:2.8rem auto .55rem;padding:0 1.5rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.11em;font-size:.98rem;margin:0;}
+  .ver{width:100%;background:var(--offwhite);overflow:hidden;box-shadow:0 30px 60px -50px rgba(48,79,66,.5);}
+  .band{width:100%;}
+  .band .in{max-width:1680px;margin:0 auto;padding:clamp(1.6rem,3vw,3rem) clamp(1.6rem,3.2vw,3.4rem);}
+  .band.pink{background:var(--pastel-strawberry);overflow:hidden;}
+  .band.pink .in{max-width:none;width:min(100% - 1rem, 1920px);padding-left:clamp(.5rem,1vw,1rem);padding-right:clamp(.5rem,1vw,1rem);}
+  .band.tight .in{padding-top:clamp(1.4rem,2.4vw,2.2rem);padding-bottom:clamp(1.4rem,2.4vw,2.2rem);}
+  img{display:block;}
+
+  .title{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.05;letter-spacing:.006em;margin:0;
+    font-size:clamp(1.9rem, 1rem + 2.4vw, 3.3rem);white-space:nowrap;}
+
+  /* ---- grote crrrunch-balk ---- */
+  .lineup{display:grid;grid-template-columns:.42fr 1.58fr;gap:clamp(.9rem,2vw,1.9rem);align-items:center;}
+  .lineup__text{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;padding-left:clamp(.75rem,2vw,2.5rem);}
+  .claim{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.0;letter-spacing:.006em;margin:0;
+    font-size:clamp(1.5rem, .9rem + 1.5vw, 2.3rem);max-width:17ch;}
+  .upts{list-style:none;margin:.1rem 0 0;padding:0;display:flex;flex-direction:column;gap:.42rem;}
+  .upts li{display:flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.86rem;color:var(--groen);}
+  .upts li::before{content:"";width:.44rem;height:.44rem;background:var(--groen);transform:rotate(45deg);flex:none;opacity:.82;}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--groen);color:var(--offwhite);font-family:var(--head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;padding:.75rem 1.5rem;border-radius:999px;text-decoration:none;white-space:nowrap;margin-top:.2rem;}
+  .lineup__bags{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.4rem,1vw,.9rem);align-items:end;margin:0;padding:0;list-style:none;}
+  .lineup__bags img{width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(48,79,66,.22));}
+
+  /* ---- onderblok: pay-off links · tekst rechts ---- */
+  .twocol{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(1.6rem,3.5vw,3.6rem);align-items:start;}
+  .payoff{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.08;letter-spacing:.006em;margin:0;
+    font-size:clamp(1.7rem, 1rem + 2vw, 2.9rem);max-width:20ch;}
+  .intro{font-family:var(--body);font-size:1.06rem;line-height:1.62;color:var(--groen);opacity:.9;margin:0;}
+  .intro .lead{font-weight:800;opacity:1;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  const P = ['mango-pineapple','banana-apple','strawberry-apple','banana-peach'];
+  const band = (cls, inner) => `<div class="band ${cls}"><div class="in">${inner}</div></div>`;
+  const PTS = ['maar 2 ingrediënten','100% fruit','vegan','55 kcal per portie','no sugar added'];
+  const INTRO = `<span class="lead">Dit is Froozy. Klaar voor de crrrunch?</span> Neem echt, rijp fruit. Haal er precies één ding uit: het water. En dan gebeurt er iets wonderlijks. De smaak wordt intenser, het fruit luchtig, en dan komt het: een crrrunch die je nog nooit van fruit hoorde. Geen suiker, geen aroma's, geen eindeloze ingrediëntenlijst vol onzin. Gewoon twee soorten fruit, meer niet. Snacken zónder schuldgevoel, met een knapperige verrassing bij elke hap. Benieuwd hoe knapperig fruit écht kan zijn? Stop een zakje in je tas voor onderweg, op kantoor of na het sporten, en ontdek het zelf.`;
+
+  const lineup = `<div class="lineup">
+    <div class="lineup__text">
+      <h3 class="claim">Eén hap en de smaak neemt het over.</h3>
+      <ul class="upts">${PTS.map(p=>`<li>${p}</li>`).join('')}</ul>
+      <a class="btn" href="#">Bestel direct →</a>
+    </div>
+    <ul class="lineup__bags">${P.map(s=>`<li><img src="/froozy/assets/packshots/${s}.webp" alt="Froozy ${s}"></li>`).join('')}</ul>
+  </div>`;
+
+  const html =
+    band('tight', `<h2 class="title">Iedereen kent fruit. Niemand kent het zo crrrunchy.</h2>`) +
+    band('pink', lineup) +
+    band('', `<div class="twocol"><div><h3 class="payoff">Een snack zonder troep, geen geheimen in de ingrediënten, alleen 2 fruitsoorten.</h3></div><div><p class="intro">${INTRO}</p></div></div>`);
+
+  document.getElementById('app').innerHTML =
+    `<div class="lbl"><h1>Variant 2 · grote zakken · linkerkolom: grote claim + punten</h1></div><section class="ver">${html}</section>`;
+</script>
+</body>
+</html>

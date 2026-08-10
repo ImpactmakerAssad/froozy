@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy, Ons verhaal van Hanin</title>
+<style>
+  /* ============================================================
+     GEDEELDE BASIS — kop + hero. Kopieer dit blok VERBATIM als
+     start van elke sphomeN.html. Ontwerp je secties ONDER de hero.
+     Let op: GEEN data-reveal / opacity:0 gebruiken (geen JS-engine
+     in de preview → zou onzichtbaar blijven). Alles standaard zichtbaar.
+     KRITISCH: clamp() ALTIJD met spaties: clamp(1rem, 0.9rem + 1vw, 2rem)
+     ============================================================ */
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+
+  :root{
+    --c-groen:#304F42; --c-offwhite:#FFF8E7;
+    --strawberry:#F6B5C5; --mango:#FFF065; --banapple:#C3D76E; --peach:#F9BB7A;
+    --pastel-strawberry:color-mix(in srgb,#F6B5C5 42%,#FFF8E7);
+    --pastel-mango:color-mix(in srgb,#FFF065 42%,#FFF8E7);
+    --pastel-banapple:color-mix(in srgb,#C3D76E 42%,#FFF8E7);
+    --pastel-peach:color-mix(in srgb,#F9BB7A 42%,#FFF8E7);
+    --font-head:'Antonio',system-ui,sans-serif;
+    --font-display:'Amber Whiskey','Antonio',serif;
+    --font-body:'Inter','Segoe UI',system-ui,sans-serif;
+    --radius-pill:999px; --radius-md:18px; --radius-lg:26px;
+    --ease-settle:cubic-bezier(.2,.7,.2,1); --ease-wipe:cubic-bezier(.5,0,.1,1);
+    --fs-200:clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
+    --fs-300:clamp(0.85rem, 0.8rem + 0.25vw, 0.98rem);
+    --fs-400:clamp(1rem, 0.94rem + 0.3vw, 1.18rem);
+    --fs-500:clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    --fs-display:clamp(2.2rem, 1.4rem + 3.5vw, 4rem);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--c-offwhite);color:var(--c-groen);font-family:var(--font-body);line-height:1.5;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  /* ---- gedeelde utilities (mag je hergebruiken of overrulen) ---- */
+  .wrap{width:min(100% - 2.5rem, 1280px);margin-inline:auto;}
+  .wrap-wide{width:min(100% - 2rem, 1600px);margin-inline:auto;}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.18em;font-size:var(--fs-200);opacity:.72;margin:0;}
+  .eyebrow::before{content:"";width:.44rem;height:.44rem;background:currentColor;transform:rotate(45deg);opacity:.85;flex:none;}
+  .display{font-family:var(--font-display);font-weight:400;line-height:1.0;letter-spacing:.006em;margin:0;}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;font-size:var(--fs-300);text-decoration:none;
+    padding:.85rem 1.7rem;border-radius:var(--radius-pill);border:1.5px solid var(--c-groen);cursor:pointer;
+    transition:transform .2s var(--ease-settle),box-shadow .2s ease;}
+  .btn--solid{background:var(--c-groen);color:var(--c-offwhite);box-shadow:0 10px 22px rgba(48,79,66,.2);}
+  .btn--solid:hover{transform:translateY(-2px);box-shadow:0 18px 30px rgba(48,79,66,.3);}
+  .btn--cream{background:var(--c-offwhite);color:var(--c-groen);box-shadow:0 8px 18px rgba(48,79,66,.14);}
+  .btn--cream:hover{transform:translateY(-2px);}
+
+  /* ============================ HERO (BEHOUDEN — niet wijzigen) ============================ */
+  .hero{position:relative;height:100svh;min-height:600px;background:var(--c-offwhite);overflow:hidden;display:flex;flex-direction:column;}
+  .hero__topbar{flex:none;background:var(--c-groen);color:var(--c-offwhite);display:flex;align-items:center;
+    justify-content:center;flex-wrap:wrap;gap:.35rem 1.75rem;padding:.5rem 1rem;}
+  .hero__trust{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-head);font-weight:600;
+    text-transform:uppercase;letter-spacing:.06em;font-size:var(--fs-200);}
+  .hero__trust svg{flex:none;opacity:.85;}
+
+  .bar{position:relative;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.5rem clamp(1rem,4vw,3rem);}
+  .bar__brand{display:inline-flex;}
+  .bar__brand img{height:clamp(66px,7vw,98px);width:auto;transform:rotate(-8deg);transform-origin:30% 40%;
+    filter:drop-shadow(0 3px 4px rgba(48,79,66,.18)) drop-shadow(0 10px 16px rgba(48,79,66,.12));}
+  .bar__right{display:flex;align-items:center;gap:clamp(.75rem,2vw,1.25rem);}
+  .bar__menu{display:flex;align-items:center;gap:clamp(1.1rem,2.2vw,2rem);margin:0;list-style:none;
+    background:var(--c-offwhite);border-radius:var(--radius-pill);padding:.46rem clamp(1rem,2.1vw,1.5rem);
+    box-shadow:0 8px 20px rgba(48,79,66,.13);font-family:var(--font-head);text-transform:uppercase;
+    letter-spacing:.05em;font-size:var(--fs-200);font-weight:600;}
+  .bar__menu a{color:var(--c-groen);text-decoration:none;padding:.2rem 0;}
+  .bar__lang{display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:36px;
+    background:var(--c-offwhite);border-radius:var(--radius-pill);box-shadow:0 8px 18px rgba(48,79,66,.12);
+    color:var(--c-groen);font-family:var(--font-head);font-weight:700;text-decoration:none;font-size:var(--fs-200);letter-spacing:.05em;}
+  .bar__cta{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.08em;font-size:var(--fs-200);text-decoration:none;
+    padding:.55rem 1.15rem;border-radius:var(--radius-pill);background:var(--c-groen);color:var(--c-offwhite);
+    box-shadow:0 8px 16px rgba(48,79,66,.18);}
+
+  .stage{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;}
+  .stage::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+    background:linear-gradient(to top right,rgba(18,26,21,.5),rgba(18,26,21,0) 56%);}
+  .hero-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:1;}
+
+  .hero__content{position:absolute;z-index:5;left:clamp(1.5rem,4vw,3.5rem);bottom:clamp(1.4rem,3.5vw,3rem);max-width:46rem;text-align:left;}
+  .hero__kicker{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.2em;font-size:var(--fs-200);color:var(--c-offwhite);margin:0 0 .75rem;}
+  .hero__kicker::before{content:"";width:1.7rem;height:2px;background:currentColor;opacity:.85;}
+  .hero__statement{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem, 0.9rem + 5.4vw, 4.6rem);
+    color:var(--c-offwhite);margin:0;line-height:.98;max-width:15ch;text-transform:uppercase;}
+  .hero__claim{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .7rem;font-family:var(--font-head);
+    font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:var(--fs-400);color:var(--c-offwhite);margin:1rem 0 0;}
+  .hero__claim-sep{opacity:.55;}
+  .hero__cta-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.2rem;}
+  .hero__cta{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.08em;font-size:var(--fs-300);text-decoration:none;
+    padding:.78rem 1.5rem;border-radius:var(--radius-pill);border:1.5px solid var(--c-offwhite);
+    background:var(--c-offwhite);color:var(--c-groen);box-shadow:0 8px 18px rgba(48,79,66,.18);}
+
+  @media (max-width:820px){
+    .bar__right{display:none;}
+    .hero__statement{font-size:clamp(1.7rem, 8vw, 2.8rem);}
+  }
+</style>
+<style>
+  /* ============================================================
+     ===== ONS VERHAAL — RICHTING 1: "EDITORIAL MAGAZINE" =======
+     Rustig, verfijnd, cream-basis · groen als tekstkleur ·
+     één subtiele fruit-pastel (peach) als accent.
+     ============================================================ */
+  :root{
+    --ink-soft:#4A6656;                 /* gedempt groen, >4.5:1 op cream */
+    --hair:color-mix(in srgb, var(--c-groen) 14%, transparent);
+    --hair-strong:color-mix(in srgb, var(--c-groen) 26%, transparent);
+    --measure:64ch;
+  }
+  .vh-main{display:block;}
+  .vh-col{width:min(100% - 2.5rem, 1180px);margin-inline:auto;}
+
+  /* ---- site-header op cream (topbar + nav uit de basis) ---- */
+  .vh-head{background:var(--c-offwhite);border-bottom:1px solid var(--hair);}
+
+  /* ---- gedeelde sectie-ritme ---- */
+  .vh-sec{padding-block:clamp(3.25rem, 2rem + 6vw, 7rem);}
+  .vh-lead-in{max-width:38rem;}
+
+  /* ============================ EDITORIAL HERO ============================ */
+  .vh-hero{padding-block:clamp(2.5rem, 1.6rem + 4vw, 5.5rem) clamp(3rem, 2rem + 5vw, 7rem);}
+  .vh-hero__grid{display:grid;grid-template-columns:1fr;gap:clamp(1.8rem, 1rem + 4vw, 4rem);align-items:center;}
+  @media (min-width:900px){
+    .vh-hero__grid{grid-template-columns:minmax(0, 0.9fr) minmax(0, 1.1fr);}
+  }
+  .vh-hero__text{max-width:34rem;}
+  .vh-hero__eyebrow{opacity:1;color:var(--ink-soft);margin-bottom:clamp(1rem, .6rem + 1.4vw, 1.7rem);}
+  .vh-hero__title{font-size:clamp(2.7rem, 1.5rem + 5.4vw, 5.4rem);line-height:.96;text-transform:uppercase;}
+  .vh-hero__lead{max-width:32rem;margin:clamp(1.1rem, .7rem + 1.4vw, 1.9rem) 0 0;
+    font-size:var(--fs-500);line-height:1.62;color:var(--c-groen);}
+  .vh-hero__sign{display:flex;align-items:center;gap:.8rem;margin-top:clamp(1.3rem, .9rem + 1.4vw, 2.1rem);
+    font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    font-size:var(--fs-200);color:var(--ink-soft);}
+  .vh-hero__sign::before{content:"";width:2.4rem;height:1.5px;background:var(--hair-strong);flex:none;}
+
+  .vh-hero__figure{margin:0;}
+  .vh-hero__img{width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;object-position:47% 30%;
+    border-radius:var(--radius-md);box-shadow:0 30px 60px rgba(48,79,66,.16);}
+  .vh-hero__cap{margin-top:.85rem;font-family:var(--font-body);font-style:italic;
+    font-size:var(--fs-300);line-height:1.5;color:var(--ink-soft);max-width:34rem;}
+  @media (max-width:520px){ .vh-hero__img{aspect-ratio:4 / 5;} }
+
+  /* ============================ VERHAAL / LEESKOLOM ============================ */
+  .vh-story__head{max-width:var(--measure);margin-inline:auto;text-align:center;
+    margin-bottom:clamp(2rem, 1.2rem + 3vw, 3.6rem);}
+  .vh-story__eyebrow{opacity:1;color:var(--ink-soft);justify-content:center;margin-bottom:1rem;}
+  .vh-story__title{font-size:clamp(2.2rem, 1.3rem + 4vw, 4.2rem);text-transform:uppercase;}
+
+  .vh-prose{width:min(100% - 2.5rem, var(--measure));margin-inline:auto;}
+  .vh-prose p{margin:0 0 1.35em;font-size:var(--fs-400);line-height:1.78;color:var(--c-groen);}
+  .vh-prose p:last-child{margin-bottom:0;}
+  .vh-prose__open{font-size:var(--fs-500);line-height:1.66;}
+  .vh-prose__open::first-letter{font-family:var(--font-head);font-weight:700;font-size:3.4em;
+    line-height:.78;float:left;margin:.06em .12em 0 0;color:var(--c-groen);}
+
+  /* ---- warme pastel-band met kinder-quote ---- */
+  .vh-band{background:var(--pastel-peach);margin-block:clamp(3rem, 2rem + 4vw, 6rem);
+    padding-block:clamp(3rem, 2rem + 5vw, 6.5rem);}
+  .vh-band__inner{width:min(100% - 2.5rem, 40rem);margin-inline:auto;text-align:center;}
+  .vh-band__mark{font-family:Georgia,'Times New Roman',serif;font-size:clamp(3.4rem, 2rem + 5vw, 6rem);
+    line-height:.5;color:color-mix(in srgb, var(--c-groen) 24%, transparent);margin-bottom:.35rem;}
+  .vh-quote{margin:0;font-family:var(--font-display);font-weight:400;line-height:1.14;letter-spacing:.008em;
+    text-transform:uppercase;color:var(--c-groen);font-size:clamp(1.5rem, 1rem + 2.3vw, 2.9rem);}
+  .vh-quote__src{display:block;margin-top:1.3rem;font-family:var(--font-head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.14em;font-size:var(--fs-200);color:var(--ink-soft);font-style:normal;}
+
+  /* ---- grote missie pull-quote (climax, op cream) ---- */
+  .vh-mission{width:min(100% - 2.5rem, 44rem);margin:clamp(3rem, 2rem + 4vw, 6rem) auto;text-align:center;}
+  .vh-mission__rule{width:2.8rem;height:2px;background:var(--hair-strong);margin:0 auto clamp(1.4rem, 1rem + 1.4vw, 2.2rem);}
+  .vh-mission blockquote{margin:0;font-family:var(--font-display);font-weight:400;line-height:1.1;letter-spacing:.008em;
+    text-transform:uppercase;color:var(--c-groen);font-size:clamp(1.85rem, 1.1rem + 3.2vw, 3.7rem);}
+
+  /* ============================ DE REIS (tijdlijn) ============================ */
+  .vh-reis__head{margin-bottom:clamp(1.8rem, 1.2rem + 2.4vw, 3rem);max-width:40rem;}
+  .vh-reis__eyebrow{opacity:1;color:var(--ink-soft);margin-bottom:.8rem;}
+  .vh-reis__intro{margin:0;font-size:var(--fs-500);line-height:1.5;color:var(--c-groen);
+    font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:.02em;}
+  .vh-reis__row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;
+    gap:clamp(1.6rem, 1rem + 2vw, 2.4rem);}
+  @media (min-width:760px){ .vh-reis__row{grid-template-columns:repeat(4, 1fr);} }
+  .vh-reis__step{position:relative;border-top:2px solid var(--hair-strong);padding-top:1.1rem;}
+  .vh-reis__step::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;
+    border-radius:50%;background:var(--peach);box-shadow:0 0 0 4px var(--c-offwhite);}
+  .vh-reis__num{font-family:var(--font-head);font-weight:700;letter-spacing:.14em;
+    font-size:var(--fs-300);color:var(--ink-soft);}
+  .vh-reis__step h3{margin:.5rem 0 .45rem;font-family:var(--font-head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.02em;font-size:var(--fs-500);color:var(--c-groen);}
+  .vh-reis__step p{margin:0;font-size:var(--fs-300);line-height:1.62;color:var(--ink-soft);}
+
+  /* ============================ MENS-BEELD (breather) ============================ */
+  .vh-photo{margin-block:clamp(1rem, 0rem + 2vw, 2.5rem);}
+  .vh-photo__frame{width:min(100% - 2.5rem, 1180px);margin-inline:auto;}
+  .vh-photo__img{width:100%;height:auto;aspect-ratio:16 / 9;object-fit:cover;object-position:center 42%;
+    border-radius:var(--radius-lg);box-shadow:0 24px 54px rgba(48,79,66,.14);}
+  .vh-photo__cap{margin:.9rem auto 0;text-align:center;font-style:italic;font-size:var(--fs-300);
+    color:var(--ink-soft);max-width:38rem;}
+
+  /* ============================ SMAKEN ============================ */
+  .vh-smaken{text-align:center;}
+  .vh-smaken__eyebrow{opacity:1;color:var(--ink-soft);justify-content:center;margin-bottom:1rem;}
+  .vh-smaken__title{font-size:clamp(1.9rem, 1.2rem + 3.2vw, 3.6rem);text-transform:uppercase;
+    max-width:20ch;margin-inline:auto;}
+  .vh-smaken__grid{list-style:none;margin:clamp(2.2rem, 1.4rem + 3vw, 3.8rem) 0 clamp(2rem, 1.2rem + 2.4vw, 3rem);
+    padding:0;display:grid;grid-template-columns:repeat(2, 1fr);gap:clamp(.9rem, .5rem + 1.6vw, 1.8rem);}
+  @media (min-width:820px){ .vh-smaken__grid{grid-template-columns:repeat(4, 1fr);} }
+  .vh-smaken__card{background:var(--c-offwhite);border:1px solid var(--hair);border-radius:var(--radius-md);
+    padding:clamp(.9rem, .5rem + 1.4vw, 1.5rem);box-shadow:0 12px 30px rgba(48,79,66,.07);}
+  .vh-smaken__card img{width:100%;height:auto;aspect-ratio:1 / 1;object-fit:contain;}
+  .vh-smaken__label{margin-top:.7rem;font-family:var(--font-head);font-weight:700;text-transform:uppercase;
+    letter-spacing:.07em;font-size:var(--fs-300);color:var(--c-groen);}
+
+  /* ============================ AFSLUITER ============================ */
+  .vh-close{background:var(--c-groen);color:var(--c-offwhite);text-align:center;}
+  .vh-close__inner{width:min(100% - 2.5rem, 46rem);margin-inline:auto;}
+  .vh-close__statement{font-family:var(--font-display);font-weight:400;line-height:1.02;letter-spacing:.006em;
+    text-transform:uppercase;color:var(--c-offwhite);margin:0;font-size:clamp(2rem, 1.2rem + 3.6vw, 4.2rem);}
+  .vh-close__sub{margin:clamp(1.3rem, .9rem + 1.4vw, 2rem) auto 0;max-width:40rem;
+    font-size:var(--fs-400);line-height:1.7;color:color-mix(in srgb, var(--c-offwhite) 88%, var(--c-groen));}
+  .vh-close__cta{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:clamp(1.6rem, 1.1rem + 1.6vw, 2.4rem);}
+  .vh-close .btn--cream{border-color:var(--c-offwhite);}
+  .btn--ghost-cream{background:transparent;border:1.5px solid color-mix(in srgb, var(--c-offwhite) 70%, transparent);
+    color:var(--c-offwhite);}
+  .btn--ghost-cream:hover{transform:translateY(-2px);background:color-mix(in srgb, var(--c-offwhite) 12%, transparent);}
+
+  /* ============================ FOOTER ============================ */
+  .vh-foot{background:var(--c-groen);color:var(--c-offwhite);
+    border-top:1px solid color-mix(in srgb, var(--c-offwhite) 16%, transparent);}
+  .vh-foot__inner{width:min(100% - 2.5rem, 1180px);margin-inline:auto;
+    padding-block:clamp(2.2rem, 1.6rem + 2.4vw, 3.4rem);
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.4rem 2rem;}
+  .vh-foot__brand img{height:clamp(34px, 3vw, 44px);width:auto;}
+  .vh-foot__nav{display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;margin:0;padding:0;list-style:none;
+    font-family:var(--font-head);font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:var(--fs-200);}
+  .vh-foot__nav a{text-decoration:none;opacity:.9;}
+  .vh-foot__nav a:hover{opacity:1;}
+  .vh-foot__note{width:100%;margin:0;padding-top:1.2rem;
+    border-top:1px solid color-mix(in srgb, var(--c-offwhite) 16%, transparent);
+    font-size:var(--fs-200);letter-spacing:.03em;color:color-mix(in srgb, var(--c-offwhite) 82%, var(--c-groen));
+    display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;justify-content:space-between;}
+</style>
+</head>
+<body>
+
+<!-- ===================== SITE-HEADER (topbar + nav uit de basis, op cream) ===================== -->
+<header class="vh-head">
+  <div class="hero__topbar">
+    <span class="hero__trust">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h11v8H2zM13 10h4l3 3v2h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+      Gratis verzenden vanaf &euro;35
+    </span>
+    <span class="hero__trust">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      Veilig betalen
+    </span>
+    <span class="hero__trust">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Bezorgd in NL &amp; Belgi&euml;
+    </span>
+  </div>
+
+  <nav class="bar" aria-label="Hoofdmenu">
+    <a class="bar__brand" href="#" aria-label="Froozy home">
+      <img src="/froozy/assets/logos/sticker-duotone.svg" alt="Froozy, crrrunchy freeze-dried fruit snack" width="74" height="54" />
+    </a>
+    <div class="bar__right">
+      <ul class="bar__menu" role="list">
+        <li><a href="#">Dit is Froozy</a></li>
+        <li><a href="#">Smaken</a></li>
+        <li><a href="#">Ons verhaal</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <a class="bar__lang" href="#">EN</a>
+      <a class="bar__cta" href="#">Bestel</a>
+    </div>
+  </nav>
+</header>
+
+<main class="vh-main">
+
+  <!-- ===================== HERO — editorieel portret ===================== -->
+  <section class="vh-hero">
+    <div class="vh-hero__grid vh-col">
+      <div class="vh-hero__text">
+        <p class="eyebrow vh-hero__eyebrow">Ons verhaal</p>
+        <h1 class="display vh-hero__title">Hoi, ik ben Hanin</h1>
+        <p class="vh-hero__lead">Samen met mijn man run ik Froozy. Niet bedacht in een boardroom, maar gewoon bij ons thuis, aan de keukentafel. Het begon met mijn eigen kids, een lege broodtrommel en een vraag die elke ouder kent: hoe geef je ze iets lekkers mee dat ook echt goed voor ze is?</p>
+        <p class="vh-hero__sign">Hanin, samen met haar man oprichter van Froozy</p>
+      </div>
+      <figure class="vh-hero__figure">
+        <img class="vh-hero__img" src="/froozy/assets/gen/story-rooftop.webp"
+          alt="Hanin geniet bij zonsondergang op een dakterras van een zakje Froozy strawberry apple"
+          width="2528" height="1696" />
+        <figcaption class="vh-hero__cap">Even stilstaan op het dak, met precies waar het allemaal om begon: puur fruit dat je zo uit je hand eet.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== HET VERHAAL — leeskolom ===================== -->
+  <section class="vh-sec vh-story">
+    <div class="vh-story__head">
+      <p class="eyebrow vh-story__eyebrow">De aanleiding</p>
+      <h2 class="display vh-story__title">Gewoon een mama met een missie</h2>
+    </div>
+
+    <div class="vh-prose">
+      <p class="vh-prose__open">Ik zit altijd vol idee&euml;n. En zoals zoveel ouders zocht ik voor mijn kids een tussendoortje dat &eacute;n leuk &eacute;n eerlijk is. Iets wat &eacute;cht gezond is, maar waar ze ook echt zin in hebben.</p>
+      <p>Dat bleek verrassend lastig. Want waarom moet lekker altijd vechten met gezond? Fruit was natuurlijk het antwoord, dat wist ik allang. Alleen: een appel in de tas wordt bruin en een aardbei haalt de middag niet.</p>
+    </div>
+  </section>
+
+  <!-- ===================== KINDER-QUOTE — warme pastel-band ===================== -->
+  <section class="vh-band" aria-label="Uit de mond van de kinderen">
+    <div class="vh-band__inner">
+      <div class="vh-band__mark" aria-hidden="true">&ldquo;</div>
+      <blockquote class="vh-quote">Mama, mag ik er nog eentje? Het is gewoon fruit, lieverd.
+        <cite class="vh-quote__src">Onze strengste smaakpanelleden, ergens tussen ontbijt en bedtijd</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ===================== HET VERHAAL — vervolg ===================== -->
+  <section class="vh-sec" style="padding-block:0;">
+    <div class="vh-prose">
+      <p>Vanuit mijn werk wist ik precies hoe het w&eacute;l kon. We vriesdrogen het fruit: het water eruit, de smaak en de crrrunch erin. Wat overblijft is puur fruit, alleen lichter, intenser en knapperig. Geen suiker toegevoegd, niks extra&rsquo;s, gewoon fruit dat zichzelf bewijst.</p>
+      <p>Samen met mijn man bouw ik Froozy op. Geen grote naam met een marketingafdeling, gewoon echte mensen met echt fruit. Klein genoeg om elk zakje serieus te nemen, koppig genoeg om er nooit iets in te stoppen wat er niet hoort.</p>
+    </div>
+
+    <!-- missie pull-quote -->
+    <figure class="vh-mission">
+      <div class="vh-mission__rule" aria-hidden="true"></div>
+      <blockquote>Mijn missie: laten zien dat lekker en gezond gewoon samen horen.</blockquote>
+    </figure>
+  </section>
+
+  <!-- ===================== DE REIS — subtiele tijdlijn ===================== -->
+  <section class="vh-sec vh-reis">
+    <div class="vh-col">
+      <div class="vh-reis__head">
+        <p class="eyebrow vh-reis__eyebrow">De reis</p>
+        <p class="vh-reis__intro">Van de keukentafel tot een knapperig zakje, in vier stappen.</p>
+      </div>
+      <ol class="vh-reis__row">
+        <li class="vh-reis__step">
+          <span class="vh-reis__num">01</span>
+          <h3>De keukentafel</h3>
+          <p>Een ouder, twee kritische kindermonden en een lege broodtrommel.</p>
+        </li>
+        <li class="vh-reis__step">
+          <span class="vh-reis__num">02</span>
+          <h3>De zoektocht</h3>
+          <p>Lekker versus gezond, en fruit dat de middag niet haalt.</p>
+        </li>
+        <li class="vh-reis__step">
+          <span class="vh-reis__num">03</span>
+          <h3>De truc</h3>
+          <p>Vriesdrogen: het water eruit, de smaak en de crrrunch erin.</p>
+        </li>
+        <li class="vh-reis__step">
+          <span class="vh-reis__num">04</span>
+          <h3>Froozy</h3>
+          <p>Twee soorten fruit per zakje, meer niet. Echte mensen, echt fruit.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== MENS-BEELD — breather ===================== -->
+  <figure class="vh-photo">
+    <div class="vh-photo__frame">
+      <img class="vh-photo__img" src="/froozy/assets/lifestyle/friends.webp"
+        alt="Vier vrienden houden lachend de vier smaken van Froozy omhoog"
+        width="1920" height="1072" />
+    </div>
+    <figcaption class="vh-photo__cap">Geen grote naam met een marketingafdeling. Gewoon echte mensen met echt fruit.</figcaption>
+  </figure>
+
+  <!-- ===================== SMAKEN ===================== -->
+  <section class="vh-sec vh-smaken">
+    <div class="vh-col">
+      <p class="eyebrow vh-smaken__eyebrow">Vier smaken, nul toevoegingen</p>
+      <h2 class="display vh-smaken__title">En zo eindigt het verhaal gewoon in je hand</h2>
+      <ul class="vh-smaken__grid">
+        <li class="vh-smaken__card">
+          <img src="/froozy/assets/packshots/mango-pineapple.webp" alt="Froozy zakje Mango en Pineapple" width="1400" height="1400" />
+          <p class="vh-smaken__label">Mango &bull; Pineapple</p>
+        </li>
+        <li class="vh-smaken__card">
+          <img src="/froozy/assets/packshots/banana-apple.webp" alt="Froozy zakje Banana en Apple" width="1400" height="1400" />
+          <p class="vh-smaken__label">Banana &bull; Apple</p>
+        </li>
+        <li class="vh-smaken__card">
+          <img src="/froozy/assets/packshots/strawberry-apple.webp" alt="Froozy zakje Strawberry en Apple" width="1400" height="1400" />
+          <p class="vh-smaken__label">Strawberry &bull; Apple</p>
+        </li>
+        <li class="vh-smaken__card">
+          <img src="/froozy/assets/packshots/banana-peach.webp" alt="Froozy zakje Banana en Peach" width="1400" height="1400" />
+          <p class="vh-smaken__label">Banana &bull; Peach</p>
+        </li>
+      </ul>
+      <a class="btn btn--solid" href="#">Bekijk alle smaken
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== AFSLUITER ===================== -->
+  <section class="vh-sec vh-close">
+    <div class="vh-close__inner">
+      <p class="vh-close__statement">Wat als lekker en gezond gewoon hetzelfde mogen zijn?</p>
+      <p class="vh-close__sub">Dat is Froozy. Geen belofte op de verpakking die binnenin sneuvelt, maar 100% real fruit met een crrrunch waar zelfs kinderen voor stoppen met spelen. Proef het zelf.</p>
+      <div class="vh-close__cta">
+        <a class="btn btn--cream" href="#">Bestel Froozy</a>
+        <a class="btn btn--ghost-cream" href="#">Waarom Froozy</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="vh-foot">
+  <div class="vh-foot__inner">
+    <a class="vh-foot__brand" href="#" aria-label="Froozy home">
+      <img src="/froozy/assets/logos/wordmark-offwhite.svg" alt="Froozy" width="140" height="44" />
+    </a>
+    <ul class="vh-foot__nav" role="list">
+      <li><a href="#">Dit is Froozy</a></li>
+      <li><a href="#">Smaken</a></li>
+      <li><a href="#">Ons verhaal</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p class="vh-foot__note">
+      <span>100% fruit, meer niet.</span>
+      <span>&copy; 2025 Froozy. Gemaakt met echt fruit.</span>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
