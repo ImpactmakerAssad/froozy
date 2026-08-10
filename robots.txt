@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://impactmakerassad.github.io/froozy/sitemap.xml

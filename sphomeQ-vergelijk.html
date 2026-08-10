@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · 5 premium homepages (met conversie-copy)</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{--groen:#304F42;--offwhite:#FFF8E7;--straw:#F6B5C5;--mango:#FFF065;--bana:#C3D76E;--peach:#F9BB7A;
+    --head:'Antonio',system-ui,sans-serif;--disp:'Amber Whiskey','Antonio',serif;--body:'Inter','Segoe UI',system-ui,sans-serif;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--offwhite);color:var(--groen);font-family:var(--body);line-height:1.5;}
+  img{display:block;max-width:100%;}
+  .top{width:min(100% - 2.5rem,1240px);margin:0 auto;padding:clamp(2rem,5vw,3.4rem) 0 clamp(1rem,2vw,1.6rem);text-align:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:700;text-transform:uppercase;
+    letter-spacing:.2em;font-size:.8rem;opacity:.62;margin:0 0 .7rem;}
+  .eyebrow::before{content:"";width:.42rem;height:.42rem;background:currentColor;transform:rotate(45deg);}
+  h1{font-family:var(--disp);font-weight:400;font-size:clamp(2.2rem, 1.3rem + 3.6vw, 4rem);line-height:1;letter-spacing:.006em;margin:0;text-transform:uppercase;}
+  .sub{max-width:62ch;margin:1rem auto 0;font-size:1.04rem;opacity:.85;}
+  .dots{display:inline-flex;gap:.55rem;margin-top:1rem;}
+  .dots span{width:.85rem;height:.85rem;transform:rotate(45deg);border-radius:2px;}
+  .dots span:nth-child(1){background:var(--straw);}.dots span:nth-child(2){background:var(--mango);}
+  .dots span:nth-child(3){background:var(--bana);}.dots span:nth-child(4){background:var(--peach);}
+  .grid{width:min(100% - 2.5rem,1320px);margin:clamp(1.5rem,4vw,2.4rem) auto clamp(3rem,7vw,5rem);
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,1.8rem);}
+  .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 18px 42px -26px rgba(48,79,66,.5);
+    display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(48,79,66,.6);}
+  .win{position:relative;height:clamp(320px,26vw,420px);overflow:hidden;background:var(--offwhite);border-bottom:1px solid rgba(48,79,66,.1);}
+  .win img{position:absolute;top:0;left:0;width:100%;display:block;transform:translateY(0);transition:transform 9s ease;}
+  .card:hover .win img{transform:translateY(calc(-100% + clamp(320px,26vw,420px)));}
+  .win__num{position:absolute;top:.8rem;left:.8rem;z-index:2;padding:.28rem .7rem;border-radius:999px;background:var(--groen);color:var(--offwhite);
+    font-family:var(--head);font-weight:700;font-size:.82rem;letter-spacing:.04em;box-shadow:0 6px 14px rgba(48,79,66,.3);}
+  .win__hint{position:absolute;bottom:.7rem;right:.8rem;z-index:2;background:rgba(48,79,66,.82);color:var(--offwhite);
+    font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.6rem;padding:.3rem .55rem;border-radius:999px;opacity:.9;}
+  .body{padding:1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.3rem;flex:1;}
+  .body h2{font-family:var(--disp);font-weight:400;font-size:1.4rem;line-height:1;letter-spacing:.006em;margin:0;text-transform:uppercase;}
+  .body p{margin:0;font-size:.92rem;opacity:.82;line-height:1.45;flex:1;}
+  .tag{display:inline-block;margin-top:.5rem;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.62rem;
+    color:var(--groen);background:color-mix(in srgb,var(--mango) 55%,#fff);padding:.2rem .55rem;border-radius:999px;align-self:flex-start;}
+  .go{display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;color:var(--groen);}
+  .go svg{transition:transform .2s ease;}
+  .card:hover .go svg{transform:translateX(4px);}
+  @media(max-width:980px){.grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){.grid{grid-template-columns:1fr;max-width:480px;}}
+</style>
+</head>
+<body>
+  <header class="top">
+    <p class="eyebrow">Froozy · premium homepage v2</p>
+    <h1>Vijf premium homepages, nu met verleidende copy</h1>
+    <p class="sub">Video-hero behouden. Elke variant gebruikt de officiele facts en de conversie-copy (verankering, sensorische crunch-taal, autoriteit, geruststelling). Hover om te scrollen, klik om live te openen.</p>
+    <div class="dots"><span></span><span></span><span></span><span></span></div>
+  </header>
+  <main class="grid">
+    <a class="card" href="/sphomeQ1.html"><div class="win"><span class="win__num">Q1 · Boutique Editorial</span><span class="win__hint">hover</span><img src="/_shots/sphomeQ1.png" alt="Q1 Boutique Editorial"></div>
+      <div class="body"><h2>Boutique Editorial</h2><p>Ultra-verfijnde luxe. No 01-04-markers, haarlijnen, zwevende packshots op podia. Het meest ingetogen-premium.</p><span class="tag">autoriteit + rust</span><span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+    <a class="card" href="/sphomeQ2.html"><div class="win"><span class="win__num">Q2 · Science Luxe</span><span class="win__hint">hover</span><img src="/_shots/sphomeQ2.png" alt="Q2 Science Luxe"></div>
+      <div class="body"><h2>Science Luxe</h2><p>De -80 C-wetenschap als premium autoriteit. Spec-cijfers, de bioloog als bewijs. Geloofwaardig en duur.</p><span class="tag">authority + reason-why</span><span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+    <a class="card" href="/sphomeQ3.html"><div class="win"><span class="win__num">Q3 · Flavor Couture</span><span class="win__hint">hover</span><img src="/_shots/sphomeQ3.png" alt="Q3 Flavor Couture"></div>
+      <div class="body"><h2>Flavor Couture</h2><p>Elke smaak een rijke couture-kleurwereld die in elkaar vloeit. Immersief en begeerlijk, mode-lookbook per smaak.</p><span class="tag">sensory imagery</span><span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+    <a class="card" href="/sphomeQ4.html"><div class="win"><span class="win__num">Q4 · Concentrated Luxe</span><span class="win__hint">hover</span><img src="/_shots/sphomeQ4.png" alt="Q4 Concentrated Luxe"></div>
+      <div class="body"><h2>Concentrated Luxe</h2><p>De scherpste conversie: reuze vers-fruit-getallen als waarde-anker, objectie-kaarten, en de 56% social proof.</p><span class="tag">anchoring + objecties</span><span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+    <a class="card" href="/sphomeQ5.html"><div class="win"><span class="win__num">Q5 · Sensory Craving</span><span class="win__hint">hover</span><img src="/_shots/sphomeQ5.png" alt="Q5 Sensory Craving"></div>
+      <div class="body"><h2>Sensory Craving</h2><p>De crunch-beleving voorop: "Hoor je dat?", sappige crunch-beelden. Maximaal begeerlijk, maakt meteen honger.</p><span class="tag">craving + desire</span><span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+  </main>
+</body>
+</html>
