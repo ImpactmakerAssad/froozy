@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · USP-grid (6 kaartjes)</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --strawberry:#F6B5C5;
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .lbl{max-width:1180px;margin:0 auto;padding:2.2rem 1.5rem 0.6rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.12em;font-size:.9rem;margin:0;}
+  .ver{background:var(--offwhite);max-width:1180px;margin:0 auto 2rem;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -45px rgba(48,79,66,.5);}
+  .inner{padding:clamp(2rem,4vw,3.2rem) clamp(1.5rem,4vw,3.5rem);}
+
+  .cap{text-align:center;margin:0 auto clamp(1.6rem,3vw,2.6rem);}
+  .cap .k{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.9rem;color:var(--groen);opacity:.72;display:inline-flex;align-items:center;gap:.55rem;}
+  .cap .k::before{content:"";width:.44rem;height:.44rem;background:var(--groen);transform:rotate(45deg);opacity:.7;}
+  .cap .h{font-family:var(--disp);font-size:clamp(2.4rem,1.4rem+3.4vw,4.2rem);line-height:1.0;margin-top:.5rem;color:var(--groen);}
+  .cap .sub{font-family:var(--body);font-size:clamp(1rem,.9rem+.4vw,1.3rem);opacity:.82;margin-top:.55rem;}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.9rem,1.6vw,1.4rem);}
+  .card{background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 16px 30px -28px rgba(48,79,66,.5);}
+  .card__img{height:clamp(150px,22vh,215px);overflow:hidden;}
+  .card__img img{width:100%;height:100%;object-fit:cover;display:block;}
+  .card__img--top img{object-position:top;}
+  .card__b{padding:1.05rem 1.2rem 1.3rem;border-top:1px solid color-mix(in srgb,var(--groen) 8%,#fff);}
+  .card__h{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:1.2rem;color:var(--groen);line-height:1.05;}
+  .card__t{font-size:.97rem;line-height:1.45;color:var(--groen);opacity:.82;margin-top:.45rem;}
+
+  @media(max-width:760px){ .grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:460px){ .grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  const U = [
+    { key:'echt-fruit',  h:'100% echt fruit',            t:'Vers fruit, gevriesdroogd. En verder helemaal niks.' },
+    { key:'geen-suiker', h:'Geen toegevoegde suikers',   t:'Alleen de natuurlijke zoetheid van het fruit zelf.' },
+    { key:'burst',       h:'Barst van smaak & nutriënten',t:'Alleen het water gaat eruit — de rest blijft, geconcentreerd.' },
+    { key:'vegan', pos:'top', h:'100% vegan',            t:'Plantaardig, voor iedereen een crrrunch.' },
+    { key:'vezels',      h:'Rijk aan vezels',            t:'Van nature vol vezels, want er gaat niks verloren.' },
+    { key:'kcal',        h:'~55 kcal per portie',        t:'Licht als een veertje, maar nooit saai.' },
+  ];
+  const cap = `<div class="cap"><div class="k">Waarom Froozy</div><div class="h">Zó goed is het écht</div><div class="sub">Alles wat een snack moet zijn.</div></div>`;
+  const grid = `<div class="grid">${U.map(u=>`
+    <div class="card">
+      <div class="card__img ${u.pos==='top'?'card__img--top':''}"><img src="/froozy/assets/usp/${u.key}.webp" alt=""></div>
+      <div class="card__b"><div class="card__h">${u.h}</div><div class="card__t">${u.t}</div></div>
+    </div>`).join('')}</div>`;
+  document.getElementById('app').innerHTML =
+    `<div class="lbl"><h1>USP-grid · 6 kaartjes (3 + 3) · nieuwe titel</h1></div><section class="ver"><div class="inner">${cap}${grid}</div></section>`;
+</script>
+</body>
+</html>

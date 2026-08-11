@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · mockups (4, 11, 13)</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --mango:#FFF065; --banapple:#C3D76E; --strawberry:#F6B5C5; --peach:#F9BB7A;
+    --pastel-mango:color-mix(in srgb,var(--mango) 42%,var(--offwhite));
+    --pastel-banapple:color-mix(in srgb,var(--banapple) 42%,var(--offwhite));
+    --pastel-strawberry:color-mix(in srgb,var(--strawberry) 42%,var(--offwhite));
+    --pastel-peach:color-mix(in srgb,var(--peach) 42%,var(--offwhite));
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .demo{max-width:1180px;margin:0 auto 1rem;border-radius:20px;overflow:hidden;box-shadow:0 24px 50px -40px rgba(48,79,66,.5);}
+  .lbl{max-width:1180px;margin:2.4rem auto 0.5rem;padding:0 1.5rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.12em;font-size:.9rem;margin:0;}
+  .lbl p{margin:.25rem 0 0;font-size:.86rem;opacity:.62;}
+  .cap{font-family:var(--head);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;opacity:.6;max-width:1180px;margin:.8rem auto .2rem;padding:0 1.5rem;}
+  svg{display:block;}
+
+  /* ============ P4 — TRUST STRIP ============ */
+  .ts{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.4rem 2.2rem;padding:1.1rem 1.5rem;}
+  .ts__i{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;}
+  .ts__i svg{width:22px;height:22px;flex:none;}
+  .ts--a{background:var(--offwhite);color:var(--groen);border-top:1px solid rgba(48,79,66,.14);border-bottom:1px solid rgba(48,79,66,.14);}
+  .ts--b{background:var(--groen);}
+  .ts--b .ts__i{color:var(--offwhite);background:rgba(255,248,231,.1);border-radius:99px;padding:.5rem 1rem;letter-spacing:.04em;}
+
+  /* ============ P13 — BADGES ============ */
+  .bwrap{background:var(--offwhite);padding:2rem 1.5rem;display:flex;justify-content:center;gap:clamp(1rem,3vw,2.5rem);flex-wrap:wrap;}
+  /* A: ronde zegels */
+  .bz{width:118px;text-align:center;}
+  .bz__c{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--groen) 24%,transparent),0 14px 26px -16px rgba(48,79,66,.5);position:relative;}
+  .bz__c::after{content:"";position:absolute;inset:8px;border-radius:50%;border:1px dashed color-mix(in srgb,var(--groen) 26%,transparent);}
+  .bz__c svg{width:34px;height:34px;color:var(--groen);}
+  .bz__t{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;margin-top:.6rem;line-height:1.15;}
+  /* B: pills met icoon */
+  .bp{display:inline-flex;align-items:center;gap:.5rem;background:var(--pastel-strawberry);color:var(--groen);border-radius:99px;padding:.6rem 1.1rem;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;}
+  .bp svg{width:20px;height:20px;flex:none;}
+  .bp--m{background:var(--pastel-mango);} .bp--g{background:var(--pastel-banapple);} .bp--p{background:var(--pastel-peach);}
+  /* C: minimal outline */
+  .bo{display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;width:120px;text-align:center;}
+  .bo__c{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:1.6px solid color-mix(in srgb,var(--groen) 34%,transparent);}
+  .bo__c svg{width:30px;height:30px;color:var(--groen);}
+  .bo__t{font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.7rem;opacity:.85;line-height:1.2;}
+
+  /* ============ P11 — NATURE VARIATIE ============ */
+  .v-inner{max-width:1180px;margin:0 auto;padding:clamp(1.8rem,3.5vw,2.8rem) clamp(1.4rem,3vw,2.4rem);}
+  /* Type 1: groot statement */
+  .st{background:var(--pastel-banapple);text-align:center;}
+  .st__k{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;opacity:.7;}
+  .st__big{font-family:var(--disp);font-weight:400;font-size:clamp(2.4rem,1.5rem+4vw,5rem);line-height:.95;margin:.4rem 0 .3rem;}
+  .st__p{font-size:.98rem;line-height:1.5;opacity:.85;max-width:52ch;margin:.4rem auto 0;}
+  /* Type 2: 3 mini-kaarten */
+  .g3{background:var(--offwhite);}
+  .g3__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.9rem,2vw,1.4rem);}
+  .g3__c{background:#fff;border-radius:18px;padding:1.5rem 1.2rem;text-align:center;box-shadow:0 18px 34px -26px rgba(48,79,66,.5);}
+  .g3__c svg{width:38px;height:38px;color:var(--groen);margin:0 auto .7rem;}
+  .g3__h{font-family:var(--disp);font-weight:400;font-size:1.5rem;line-height:1;margin:0 0 .35rem;}
+  .g3__t{font-size:.84rem;line-height:1.5;opacity:.82;}
+  /* Type 3: full-bleed foto met overlay */
+  .fb{position:relative;min-height:300px;display:grid;place-items:center;text-align:center;overflow:hidden;background:linear-gradient(135deg,#F9BB7A,#F6B5C5);}
+  .fb__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(48,56,47,.28),rgba(48,56,47,.5));}
+  .fb__in{position:relative;color:#fff;padding:2.5rem 1.5rem;}
+  .fb__k{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;opacity:.9;}
+  .fb__h{font-family:var(--disp);font-weight:400;font-size:clamp(2rem,1.2rem+3vw,3.6rem);line-height:1;margin:.4rem 0;}
+  .fb__p{font-size:1rem;opacity:.92;max-width:44ch;margin:.3rem auto 0;}
+
+  /* ============ P5+7+8+9 — WIREFRAME ============ */
+  .wf{max-width:1180px;margin:0 auto 3rem;background:#fff;border-radius:20px;padding:clamp(1.4rem,3vw,2.2rem);box-shadow:0 24px 50px -40px rgba(48,79,66,.5);}
+  .wf h2{font-family:var(--disp);font-weight:400;font-size:1.8rem;margin:0 0 .3rem;}
+  .wf__lead{font-size:.92rem;opacity:.8;margin:0 0 1.2rem;max-width:66ch;}
+  .wf__row{display:flex;align-items:stretch;gap:.6rem;flex-wrap:wrap;}
+  .wf__box{flex:1 1 210px;border:1.6px dashed color-mix(in srgb,var(--groen) 30%,transparent);border-radius:14px;padding:1rem;background:var(--offwhite);}
+  .wf__n{font-family:var(--head);font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6;}
+  .wf__bt{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:.95rem;margin:.2rem 0 .35rem;}
+  .wf__bp{font-size:.82rem;line-height:1.45;opacity:.82;}
+  .wf__tag{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--pastel-peach);border-radius:99px;padding:.15rem .5rem;margin-top:.5rem;color:var(--groen);}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  // Iconen (dun, in Froozy-stijl)
+  const ic = {
+    truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h11v8H2zM13 10h4l3 3v2h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>',
+    clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>',
+    shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+    fruit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.5C10.7 6.6 7.7 6 6 7.8c-2 2.1-1.4 6.7 1.4 9.2 1.3 1.2 2.6 1.4 4.6.4 2 1 3.3.8 4.6-.4 2.8-2.5 3.4-7.1 1.4-9.2-1.7-1.8-4.7-1.2-6 .7Z"/><path d="M12 8.5c.2-2 1.2-3.2 3-3.6"/></svg>',
+    nosugar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="9" rx="1.5"/><path d="M4 12h16"/><path d="M3 3l18 18"/></svg>',
+    vegan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-8 6.5-15 16-15 0 9.5-7 16-16 15Z"/><path d="M4 20C9 16 12.5 11 16 6"/></svg>',
+    fibre:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 9c0-2.5-1.5-4.5-4-5 .3 2.6 1.6 4.4 4 5Z"/><path d="M12 9c0-2.5 1.5-4.5 4-5-.3 2.6-1.6 4.4-4 5Z"/><path d="M12 14c-2.2-.4-3.6-2-4-4M12 14c2.2-.4 3.6-2 4-4"/></svg>',
+    kcal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1-.5-2-1-2.5C15 9 17 11 17 14a5 5 0 0 1-10 0c0-4 3-6 5-11Z"/></svg>',
+  };
+  const claims = [
+    { t:'100% echt fruit', i:'fruit' },
+    { t:'Geen suiker toegevoegd', i:'nosugar' },
+    { t:'Vegan', i:'vegan' },
+    { t:'Rijk aan vezels', i:'fibre' },
+  ];
+  const trust = [
+    { t:'Gratis verzending vanaf €30', i:'truck' },
+    { t:'Morgen in huis', i:'clock' },
+    { t:'Veilig betalen', i:'lock' },
+    { t:'Niet goed, geld terug', i:'shield' },
+  ];
+
+  const P4 = `
+    <div class="lbl"><h1>Punt 4 — Geruststelling-strip</h1><p>Dunne balk die twijfel rond bestellen wegneemt. Twee stijlen.</p></div>
+    <div class="cap">Variant A — licht, op off-white (subtiel, past onder de hero)</div>
+    <div class="demo"><div class="ts ts--a">${trust.map(x=>`<span class="ts__i">${ic[x.i]}${x.t}</span>`).join('')}</div></div>
+    <div class="cap">Variant B — groene band met pills (opvallender, als accent)</div>
+    <div class="demo"><div class="ts ts--b">${trust.map(x=>`<span class="ts__i">${ic[x.i]}${x.t}</span>`).join('')}</div></div>`;
+
+  const P13 = `
+    <div class="lbl"><h1>Punt 13 — Claim-badges</h1><p>Dezelfde 4 beloftes, drie badge-stijlen.</p></div>
+    <div class="cap">Variant A — ronde zegels (ambachtelijk, premium)</div>
+    <div class="demo"><div class="bwrap">${claims.map(c=>`<div class="bz"><div class="bz__c">${ic[c.i]}</div><div class="bz__t">${c.t}</div></div>`).join('')}</div></div>
+    <div class="cap">Variant B — gekleurde pills (vrolijk, in de merkkleuren)</div>
+    <div class="demo"><div class="bwrap">${claims.map((c,i)=>`<span class="bp ${['','bp--m','bp--g','bp--p'][i]}">${ic[c.i]}${c.t}</span>`).join('')}</div></div>
+    <div class="cap">Variant C — minimalistische outline (rustig, modern)</div>
+    <div class="demo"><div class="bwrap">${claims.map(c=>`<div class="bo"><div class="bo__c">${ic[c.i]}</div><div class="bo__t">${c.t}</div></div>`).join('')}</div></div>`;
+
+  const P11 = `
+    <div class="lbl"><h1>Punt 11 — Variatie in de "Dit is Froozy"-blokken</h1><p>Nu 7× hetzelfde foto|tekst-ritme. Drie bloktypes om ertussen te zetten en het ritme te breken.</p></div>
+    <div class="cap">Type 1 — groot statement (tussen de splits; laat één belofte knallen)</div>
+    <div class="demo st"><div class="v-inner"><div class="st__k">◆ Slechts 2 ingrediënten</div><div class="st__big">Fruit. En fruit.</div><p class="st__p">Lees het etiket maar: twee soorten fruit, meer niet. Geen namen die je niet kunt uitspreken.</p></div></div>
+    <div class="cap">Type 2 — drie mini-kaarten (groepeer 3 kortere claims compact)</div>
+    <div class="demo g3"><div class="v-inner"><div class="g3__grid">
+      <div class="g3__c">${ic.vegan}<h3 class="g3__h">100% vegan</h3><p class="g3__t">Van begin tot eind plantaardig. Geen uitzonderingen.</p></div>
+      <div class="g3__c">${ic.fibre}<h3 class="g3__h">Rijk aan vezels</h3><p class="g3__t">Het hele stuk fruit, dus alle vezels blijven behouden.</p></div>
+      <div class="g3__c">${ic.kcal}<h3 class="g3__h">55-58 kcal</h3><p class="g3__t">Luchtig en knapperig — smaak zonder dat het zwaar ligt.</p></div>
+    </div></div></div>
+    <div class="cap">Type 3 — full-bleed foto met tekst eroverheen (adempauze, sfeer)</div>
+    <div class="demo fb"><div class="fb__scrim"></div><div class="fb__in"><div class="fb__k">◆ Puur natuur</div><div class="fb__h">Niets dan fruit</div><p class="fb__p">Alleen vers, rijp fruit — gevriesdroogd. Geen concentraat, geen trucjes.</p></div></div>`;
+
+  const WF = `
+    <div class="lbl"><h1>Punt 5 + 7 + 8 + 9 — Gecombineerd tot één verhaal-sectie</h1><p>Plan: één samenhangende sectie "Van keukentafel tot crrrunch" die vier dingen in een logische flow vertelt.</p></div>
+    <div class="wf">
+      <h2>Van keukentafel tot crrrunch</h2>
+      <p class="wf__lead">Eén verticale sectie die de bezoeker meeneemt: waarom we begonnen → hoe we het maken → wanneer je het eet → waarom het slim is. Elk blok kort, met beeld.</p>
+      <div class="wf__row">
+        <div class="wf__box"><div class="wf__n">Blok 1 · punt 7</div><div class="wf__bt">Ons begin</div><p class="wf__bp">Keukentafel, twee kritische kindermonden. Foto + 2 zinnen + link naar het verhaal.</p><span class="wf__tag">emotie / vertrouwen</span></div>
+        <div class="wf__box"><div class="wf__n">Blok 2 · punt 5</div><div class="wf__bt">Hoe we het maken</div><p class="wf__bp">3 stappen: vers fruit → water eruit (vriesdrogen) → crrrunch. De wow-factor, ook op de homepage.</p><span class="wf__tag">premium / bewijs</span></div>
+        <div class="wf__box"><div class="wf__n">Blok 3 · punt 8</div><div class="wf__bt">Voor elk moment</div><p class="wf__bp">Lunchtrommel · sporttas · kantoor · topping op yoghurt. Icoontjes of 4 kleine foto's.</p><span class="wf__tag">gebruik / herhaling</span></div>
+        <div class="wf__box"><div class="wf__n">Blok 4 · punt 9</div><div class="wf__bt">Slim & duurzaam</div><p class="wf__bp">Lang houdbaar, minder verspilling. Eén regel die het rondmaakt.</p><span class="wf__tag">waarden</span></div>
+      </div>
+    </div>`;
+
+  const groups = { p4: P4, p13: P13, p11: P11, wf: WF };
+  document.getElementById('app').innerHTML = Object.entries(groups).map(([id, html]) => `<section class="grp" id="${id}" style="padding-bottom:1.4rem">${html}</section>`).join('');
+</script>
+</body>
+</html>

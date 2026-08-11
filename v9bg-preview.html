@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · Variant 9: 5 achtergrondkleuren</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --mango:#FFF065; --banapple:#C3D76E; --strawberry:#F6B5C5; --peach:#F9BB7A;
+    --pastel-mango:color-mix(in srgb,var(--mango) 42%,var(--offwhite));
+    --pastel-banapple:color-mix(in srgb,var(--banapple) 42%,var(--offwhite));
+    --pastel-strawberry:color-mix(in srgb,var(--strawberry) 42%,var(--offwhite));
+    --pastel-peach:color-mix(in srgb,var(--peach) 42%,var(--offwhite));
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .lbl{max-width:1180px;margin:0 auto;padding:2.4rem 1.5rem 0.6rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.14em;font-size:.85rem;margin:0;}
+  .lbl p{margin:.3rem 0 0;font-size:.9rem;opacity:.62;}
+  .ver{max-width:1180px;margin:0 auto 2.2rem;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -45px rgba(48,79,66,.5);}
+  .inner{padding:clamp(2rem,4vw,3.4rem) clamp(1.4rem,4vw,3.4rem);}
+  .cap{text-align:center;margin:0 auto clamp(1.6rem,3.5vw,2.6rem);}
+  .cap .k{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;opacity:.7;}
+  .cap .h{font-family:var(--disp);font-weight:400;font-size:clamp(1.7rem,1.1rem+1.7vw,2.7rem);line-height:1.02;margin-top:.4rem;}
+  .cap .lead{font-size:.95rem;line-height:1.55;opacity:.82;max-width:60ch;margin:.7rem auto 0;}
+  h3{margin:0;}
+  img{display:block;}
+
+  /* Variant 9 — badge-kaarten (identiek aan de gekozen variant) */
+  .v9grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.4vw,1.8rem);}
+  .v9card{background:#fff;border-radius:20px;padding:2.4rem 1.15rem 1.4rem;margin-top:2rem;position:relative;text-align:center;box-shadow:0 22px 40px -28px rgba(48,79,66,.5);}
+  .v9badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);width:clamp(56px,6vw,72px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-family:var(--disp);font-size:clamp(1.3rem,1.1rem+.5vw,1.7rem);color:var(--groen);box-shadow:0 0 0 5px #fff,0 12px 22px -12px rgba(48,79,66,.6);}
+  .v9img{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;margin-bottom:.85rem;}
+  .v9img img{width:100%;height:100%;object-fit:cover;}
+  .v9h{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(1.02rem,.9rem+.5vw,1.35rem);margin:0 0 .35rem;}
+  .v9t{font-size:.83rem;line-height:1.48;opacity:.82;color:var(--groen);}
+
+  /* Donkere achtergrond: alleen de kop-tekst wordt licht; kaarten blijven wit met donkere tekst */
+  .dark .cap .h,.dark .cap .k,.dark .cap .lead{color:var(--offwhite);}
+  @media(max-width:820px){ .v9grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  const STEPS = [
+    { n:'01', k:'Eeuwenoud', img:'/froozy/assets/timeline/eeuwenoud.webp', t:'Fruit is al eeuwenoud rijk aan vitamines en vezels. Maar hoe maken we het nóg onweerstaanbaarder?', accent:'strawberry' },
+    { n:'02', k:'De truc', img:'/froozy/assets/timeline/de-truc.webp', t:'Het begon bij kou: we vroren het fruit diep onder nul, op zoek naar iets verfijnders.', accent:'peach' },
+    { n:'03', k:'De twist', img:'/froozy/assets/timeline/onze-twist.webp', t:'Geen hitte, maar vacuüm dat het kurkdroog trekt. Het water verdwijnt, de crrrunch verschijnt.', accent:'banapple' },
+    { n:'04', k:'Froozy', img:'/froozy/assets/packshots/strawberry-apple.webp', t:'Zo ontstond Froozy: gevriesdroogd fruit in zakjes vol crrrunch. Niets toegevoegd, alles bewaard.', accent:'mango' },
+  ];
+  const cap = `<div class="cap"><div class="k">◆ Geschiedenis</div><div class="h">Eeuwenoud fruit, knapperig nieuw</div><p class="lead">Mensen bewaren fruit al duizenden jaren door het te drogen. Wij verfijnden die kunst: vriesdrogen onttrekt het water zonder hitte — zo blijft alles bewaard en ontstaat de crrrunch.</p></div>`;
+
+  const cards = STEPS.map(s=>`
+      <div class="v9card"><div class="v9badge" style="background:var(--${s.accent})">${s.n}</div><div class="v9img"><img src="${s.img}" alt=""></div><h3 class="v9h">${s.k}</h3><p class="v9t">${s.t}</p></div>`).join('');
+
+  const BG = [
+    { name:'Zacht roze (pastel-aardbei)', css:'var(--pastel-strawberry)', dark:false },
+    { name:'Zacht groen (pastel-banappel)', css:'var(--pastel-banapple)', dark:false },
+    { name:'Zacht perzik (pastel-perzik)', css:'var(--pastel-peach)', dark:false },
+    { name:'Cr&egrave;me (off-white, merkbasis)', css:'var(--offwhite)', dark:false },
+    { name:'Diep Froozy-groen (premium)', css:'var(--groen)', dark:true },
+  ];
+
+  document.getElementById('app').innerHTML = BG.map((b,i)=>`
+    <div class="lbl"><h1>Achtergrond ${String.fromCharCode(65+i)} — ${b.name}</h1><p>Variant 9 (badge-kaarten) op deze achtergrondkleur.</p></div>
+    <section class="ver${b.dark?' dark':''}" style="background:${b.css}"><div class="inner">${cap}<div class="v9grid">${cards}</div></div></section>`).join('');
+</script>
+</body>
+</html>

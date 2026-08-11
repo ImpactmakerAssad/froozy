@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · Ons verhaal · 4 Warme polaroid</title>
+<style>
+  @font-face{font-family:'Antonio';src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap;}
+  @font-face{font-family:'Antonio';src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
+  @font-face{font-family:'Amber Whiskey';src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2');font-weight:400;font-display:swap;}
+  :root{--groen:#304F42;--offwhite:#FFF8E7;--straw:#F6B5C5;--mango:#FFF065;--peach:#F9BB7A;
+    --p-peach:color-mix(in srgb,#F9BB7A 40%,#FFF8E7);
+    --head:'Antonio',system-ui,sans-serif;--disp:'Amber Whiskey','Antonio',serif;--body:'Inter','Segoe UI',system-ui,sans-serif;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--offwhite);color:var(--groen);font-family:var(--body);line-height:1.5;}
+  img{display:block;max-width:100%;}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem clamp(1rem,4vw,3rem);background:var(--p-peach);}
+  .nav__logo{height:clamp(58px,6vw,82px);width:auto;transform:rotate(-8deg);filter:drop-shadow(0 8px 14px rgba(48,79,66,.16));}
+  .nav__menu{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);background:var(--offwhite);border-radius:999px;
+    padding:.5rem 1.3rem;box-shadow:0 8px 20px rgba(48,79,66,.13);font-family:var(--head);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;font-weight:600;}
+  .nav__menu a{color:var(--groen);text-decoration:none;}
+  .nav__cta{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;
+    background:var(--groen);color:var(--offwhite);padding:.55rem 1.15rem;border-radius:999px;text-decoration:none;}
+  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.75rem;opacity:.7;margin:0;}
+  .eyebrow::before{content:"";width:.4rem;height:.4rem;background:currentColor;transform:rotate(45deg);}
+  @media(max-width:760px){.nav__menu{display:none;}}
+
+  /* ---- Warme polaroid + notitie op perzik-pastel ---- */
+  .s{min-height:82vh;background:var(--p-peach);display:grid;place-items:center;padding:clamp(1.75rem,4vw,3.5rem);}
+  .s__in{width:min(100% - 2rem,1000px);display:grid;grid-template-columns:auto 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .s__pol{background:#fff;padding:.75rem .75rem 2rem;border-radius:6px;box-shadow:0 26px 50px -22px rgba(48,79,66,.45);
+    transform:rotate(-4deg);width:min(320px,44vw);flex:none;}
+  .s__pol img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;}
+  .s__pol figcaption{font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;
+    color:var(--groen);opacity:.7;text-align:center;margin-top:.7rem;}
+  .s__name{font-family:var(--disp);font-weight:400;font-size:clamp(1.85rem, 1.2rem + 2vw, 2.8rem);line-height:1;letter-spacing:.006em;margin:.7rem 0 1rem;text-transform:uppercase;}
+  .s__body{font-size:clamp(1rem, 0.95rem + 0.3vw, 1.16rem);line-height:1.62;max-width:44ch;margin:0;}
+  .s__quote{margin:1.3rem 0 0;padding-left:1rem;border-left:4px solid var(--straw);font-family:var(--disp);
+    font-size:clamp(1.1rem, 0.9rem + 0.7vw, 1.5rem);line-height:1.15;color:var(--groen);}
+  .s__quote small{display:block;font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.66rem;opacity:.6;margin-top:.5rem;}
+  @media(max-width:720px){.s__in{grid-template-columns:1fr;justify-items:center;text-align:center;gap:1.75rem;}.s__quote{border-left:0;padding-left:0;}.s__body{margin:0 auto;}}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <img class="nav__logo" src="/froozy/assets/logos/sticker-duotone.svg" alt="Froozy" />
+    <div class="nav__menu"><a href="#">Dit is Froozy</a><a href="#">Smaken</a><a href="#">Ons verhaal</a><a href="#">Contact</a></div>
+    <a class="nav__cta" href="#">Bestel</a>
+  </nav>
+
+  <section class="s">
+    <div class="s__in">
+      <figure class="s__pol" style="margin:0;">
+        <img src="/froozy/assets/gen/story-rooftop.webp" alt="Hanin geniet van een zakje Froozy" />
+        <figcaption>Hanin · aan de keukentafel</figcaption>
+      </figure>
+      <div class="s__text">
+        <p class="eyebrow">Ons verhaal</p>
+        <h1 class="s__name">Hoi, ik ben Hanin</h1>
+        <p class="s__body">Samen met mijn man begon ik Froozy, aan onze keukentafel. Ik zocht een snack die mijn kids én lekker én gezond vonden. Die bestond niet, dus maakte ik hem zelf: puur fruit, het water eruit, de crrrunch erin. Geen suiker, geen gedoe.</p>
+        <p class="s__quote">Mama, mag ik er nog eentje?<small>Onze strengste smaakpanelleden</small></p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

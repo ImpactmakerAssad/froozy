@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · variant 3 · foto-3 claim · puntenbalk · grote zakken</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --strawberry:#F6B5C5;
+    --pastel-strawberry:color-mix(in srgb,#F6B5C5 42%,#FFF8E7);
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .lbl{max-width:1680px;margin:2.8rem auto .55rem;padding:0 1.5rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.11em;font-size:.98rem;margin:0;}
+  .ver{width:100%;background:var(--offwhite);overflow:hidden;box-shadow:0 30px 60px -50px rgba(48,79,66,.5);}
+  .band{width:100%;}
+  .band .in{max-width:1680px;margin:0 auto;padding:clamp(1.6rem,3vw,3rem) clamp(1.6rem,3.2vw,3.4rem);}
+  .band.pink{background:var(--pastel-strawberry);overflow:hidden;}
+  .band.pink .in{max-width:none;width:min(100% - 1rem, 1920px);padding-left:clamp(.6rem,1.4vw,1.4rem);padding-right:clamp(.6rem,1.4vw,1.4rem);}
+  .band.tight .in{padding-top:clamp(1.4rem,2.4vw,2.2rem);padding-bottom:clamp(1.4rem,2.4vw,2.2rem);}
+  .band.center .in{text-align:center;}
+  img{display:block;}
+
+  .title{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.05;letter-spacing:.006em;margin:0 auto;
+    font-size:clamp(1.9rem, 1rem + 2.4vw, 3.3rem);white-space:nowrap;}
+  .claim{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.08;letter-spacing:.006em;margin:0 auto;
+    font-size:clamp(1.5rem, .9rem + 1.8vw, 2.5rem);max-width:34ch;text-wrap:balance;}
+
+  .bagsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.6rem,1.6vw,1.6rem);align-items:end;
+    max-width:1640px;margin:clamp(1.2rem,2.4vw,2rem) auto 0;list-style:none;padding:0;}
+  .bagsrow img{width:100%;height:auto;filter:drop-shadow(0 20px 32px rgba(48,79,66,.24));}
+
+  .ptbar{list-style:none;margin:clamp(1.3rem,2.6vw,2.1rem) 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
+  .ptbar li{font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:clamp(.8rem,.55rem+.5vw,1rem);color:var(--groen);display:inline-flex;align-items:center;}
+  .ptbar li:not(:first-child)::before{content:"◆";margin:0 clamp(.8rem,2vw,1.7rem);opacity:.55;font-size:.62em;}
+
+  .payoff{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.08;letter-spacing:.006em;margin:0 auto;
+    font-size:clamp(1.7rem, 1rem + 2vw, 2.9rem);max-width:30ch;}
+  .intro{font-family:var(--body);font-size:1.06rem;line-height:1.62;color:var(--groen);opacity:.9;margin:1.1rem auto 0;max-width:92ch;}
+  .intro .lead{font-weight:800;opacity:1;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  const P = ['mango-pineapple','banana-apple','strawberry-apple','banana-peach'];
+  const band = (cls, inner) => `<div class="band ${cls}"><div class="in">${inner}</div></div>`;
+  const PTS = ['100% echt fruit','Slechts twee ingrediënten','55 tot 58 kcal per portie','No sugar added'];
+  const INTRO = `<span class="lead">Dit is Froozy.</span> Neem echt, rijp fruit. Haal er precies één ding uit: het water. En dan gebeurt er iets wonderlijks. De smaak wordt intenser, het fruit luchtig, en dan komt het: een crrrunch die je nog nooit van fruit hoorde. Geen suiker, geen aroma's, geen eindeloze ingrediëntenlijst vol onzin. Gewoon twee soorten fruit, meer niet. Snacken zónder schuldgevoel, met een knapperige verrassing bij elke hap. Benieuwd hoe knapperig fruit écht kan zijn? Stop een zakje in je tas voor onderweg, op kantoor of na het sporten, en ontdek het zelf.`;
+
+  const pink = `
+    <h3 class="claim">Echt fruit en verder niets, want wij halen enkel het water eruit en laten al het lekkers gewoon zitten.</h3>
+    <ul class="bagsrow">${P.map(s=>`<li><img src="/froozy/assets/packshots/${s}.webp" alt="Froozy ${s}"></li>`).join('')}</ul>
+    <ul class="ptbar">${PTS.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+
+  const html =
+    band('tight center', `<h2 class="title">Iedereen kent fruit. Niemand kent het zo crrrunchy.</h2>`) +
+    band('pink center', pink) +
+    band('center', `<h3 class="payoff">Een snack zonder troep, geen geheimen in de ingrediënten, alleen 2 fruitsoorten.</h3><p class="intro">${INTRO}</p>`);
+
+  document.getElementById('app').innerHTML =
+    `<div class="lbl"><h1>Variant 3 · foto-3 claim · puntenbalk onder de zakken · grote zakken</h1></div><section class="ver">${html}</section>`;
+</script>
+</body>
+</html>

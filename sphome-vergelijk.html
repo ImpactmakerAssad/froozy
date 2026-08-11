@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · 5 homepage-richtingen</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7;
+    --straw:#F6B5C5; --mango:#FFF065; --bana:#C3D76E; --peach:#F9BB7A;
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--offwhite);color:var(--groen);font-family:var(--body);line-height:1.5;}
+  .top{width:min(100% - 2.5rem,1240px);margin:0 auto;padding:clamp(2rem,5vw,3.6rem) 0 clamp(1rem,2.5vw,1.8rem);text-align:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:700;text-transform:uppercase;
+    letter-spacing:.2em;font-size:.8rem;opacity:.62;margin:0 0 .7rem;}
+  .eyebrow::before{content:"";width:.42rem;height:.42rem;background:currentColor;transform:rotate(45deg);}
+  h1{font-family:var(--disp);font-weight:400;font-size:clamp(2.4rem, 1.4rem + 4vw, 4.4rem);line-height:1.0;letter-spacing:.006em;margin:0;text-transform:uppercase;}
+  .sub{max-width:60ch;margin:1rem auto 0;font-size:1.06rem;opacity:.85;}
+  .note{margin:1.1rem auto 0;font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+    font-size:.76rem;opacity:.6;}
+  .dots{display:inline-flex;gap:.55rem;margin-top:1rem;}
+  .dots span{width:.85rem;height:.85rem;transform:rotate(45deg);border-radius:2px;}
+  .dots span:nth-child(1){background:var(--straw);}.dots span:nth-child(2){background:var(--mango);}
+  .dots span:nth-child(3){background:var(--bana);}.dots span:nth-child(4){background:var(--peach);}
+
+  .grid{width:min(100% - 2.5rem,1240px);margin:clamp(1.5rem,4vw,2.6rem) auto clamp(3rem,7vw,5rem);
+    display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.2rem,2.6vw,2rem);}
+  .card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 18px 44px -26px rgba(48,79,66,.5);
+    display:flex;flex-direction:column;text-decoration:none;color:inherit;
+    transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 34px 66px -30px rgba(48,79,66,.6);}
+  .win{position:relative;height:clamp(320px,42vw,520px);overflow:hidden;background:var(--offwhite);border-bottom:1px solid rgba(48,79,66,.1);}
+  .win img{position:absolute;top:0;left:0;width:100%;display:block;transform:translateY(0);transition:transform 7s ease;}
+  .card:hover .win img{transform:translateY(calc(-100% + clamp(320px,42vw,520px)));}
+  .win__num{position:absolute;top:.9rem;left:.9rem;z-index:2;width:2.2rem;height:2.2rem;border-radius:999px;
+    background:var(--groen);color:var(--offwhite);display:grid;place-items:center;
+    font-family:var(--head);font-weight:700;font-size:1.05rem;box-shadow:0 6px 14px rgba(48,79,66,.3);}
+  .win__hint{position:absolute;bottom:.7rem;right:.8rem;z-index:2;background:rgba(48,79,66,.82);color:var(--offwhite);
+    font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.62rem;
+    padding:.32rem .6rem;border-radius:999px;opacity:.9;}
+  .body{padding:1.1rem 1.25rem 1.35rem;display:flex;flex-direction:column;gap:.35rem;flex:1;}
+  .body h2{font-family:var(--disp);font-weight:400;font-size:1.6rem;line-height:1;letter-spacing:.006em;margin:0;text-transform:uppercase;}
+  .body p{margin:0;font-size:.96rem;opacity:.82;line-height:1.45;flex:1;}
+  .go{display:inline-flex;align-items:center;gap:.45rem;margin-top:.7rem;font-family:var(--head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;font-size:.82rem;color:var(--groen);}
+  .go svg{transition:transform .2s ease;}
+  .card:hover .go svg{transform:translateX(4px);}
+  @media (max-width:720px){ .grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+  <header class="top">
+    <p class="eyebrow">Froozy · homepage-redesign</p>
+    <h1>Vijf richtingen. Eén hero.</h1>
+    <p class="sub">De hero (video + "Ready in a fruity CRRRUNCH?") blijft in alle vijf behouden. Alles eronder is opnieuw ingericht: vijf ontwerprichtingen met dezelfde echte tekst en foto's. Klik een kaart om 'm live te bekijken; hover om door de pagina te scrollen.</p>
+    <div class="dots"><span></span><span></span><span></span><span></span></div>
+    <p class="note">Tip: open elke pagina en scroll. Dit zijn echte, klikbare previews</p>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="/sphome1.html">
+      <div class="win"><span class="win__num">1</span><span class="win__hint">hover om te scrollen</span><img src="/_shots/sphome1.png" alt="Variant 1 — Editorial Cream" /></div>
+      <div class="body"><h2>Editorial Cream</h2><p>Rustig &amp; luxe. Veel witruimte op cream, met één diep-groene statement-band als anker. Aesop/Soof-gevoel. Het meest ingetogen-premium.</p>
+      <span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </a>
+    <a class="card" href="/sphome2.html">
+      <div class="win"><span class="win__num">2</span><span class="win__hint">hover om te scrollen</span><img src="/_shots/sphome2.png" alt="Variant 2 — Bold Green" /></div>
+      <div class="body"><h2>Bold Green</h2><p>Diep bosgroen als hoofdkleur, cream typografie. De fruit-explosies knallen tegen het groen. Dramatisch, zelfverzekerd, maximaal onderscheidend.</p>
+      <span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </a>
+    <a class="card" href="/sphome3.html">
+      <div class="win"><span class="win__num">3</span><span class="win__hint">hover om te scrollen</span><img src="/_shots/sphome3.png" alt="Variant 3 — Fruit Pop" /></div>
+      <div class="body"><h2>Fruit Pop</h2><p>Vier kleurbanen (roze · geel · groen · oranje), elke smaak een eigen wow-moment met exploderende zak en grote naam. Energiek, kleurrijk, speels-premium.</p>
+      <span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </a>
+    <a class="card" href="/sphome4.html">
+      <div class="win"><span class="win__num">4</span><span class="win__hint">hover om te scrollen</span><img src="/_shots/sphome4.png" alt="Variant 4 — Bento Magazine" /></div>
+      <div class="body"><h2>Bento Magazine</h2><p>Modern asymmetrisch tegelraster op cream, met één groene feature-tegel. Strak, georganiseerd, high-end-app-gevoel, maar warm.</p>
+      <span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </a>
+    <a class="card" href="/sphome5.html">
+      <div class="win"><span class="win__num">5</span><span class="win__hint">hover om te scrollen</span><img src="/_shots/sphome5.png" alt="Variant 5 — Warm Sunset" /></div>
+      <div class="body"><h2>Warm Sunset</h2><p>Nieuw warm zonsondergang-verloop (perzik → aardbei → cream) met zachte glazen panelen; groen blijft het anker. De frisste, meest gedurfde kleurkeuze.</p>
+      <span class="go">Bekijk live <svg viewBox="0 0 24 24" width="15" height="15"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </a>
+  </main>
+</body>
+</html>

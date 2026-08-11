@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · tekst voluit + roze zak-balk (6 opties)</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --strawberry:#F6B5C5;
+    --pastel-strawberry:color-mix(in srgb,#F6B5C5 42%,#FFF8E7);
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .lbl{max-width:1680px;margin:2.6rem auto .55rem;padding:0 1.5rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.11em;font-size:.98rem;margin:0;}
+  .ver{width:100%;background:var(--offwhite);overflow:hidden;}
+  .band{width:100%;}
+  .band .in{max-width:1680px;margin:0 auto;padding:clamp(1.8rem,3.2vw,3.2rem) clamp(1.6rem,4vw,4.2rem);}
+  .band.pink{background:var(--pastel-strawberry);}
+  .band.center .in{text-align:center;}
+  img{display:block;}
+
+  .title{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.05;letter-spacing:.006em;margin:0;
+    font-size:clamp(1.9rem, 1rem + 2.4vw, 3.3rem);white-space:nowrap;}
+  .center .title{margin-inline:auto;}
+  .tagline{font-family:var(--body);font-weight:800;line-height:1.3;color:var(--groen);margin:.6rem 0 0;
+    font-size:clamp(1.15rem, .85rem + .95vw, 1.75rem);max-width:52ch;}
+  .center .tagline{margin-inline:auto;}
+  .intro{font-family:var(--body);font-size:1.06rem;line-height:1.62;color:var(--groen);opacity:.9;margin:0;max-width:none;}
+  .center .intro{max-width:92ch;margin-inline:auto;}
+  .intro .lead{font-weight:800;opacity:1;}
+
+  .bags{display:flex;gap:clamp(.6rem,1.4vw,1.3rem);align-items:flex-end;justify-content:center;}
+  .bags img{width:100%;max-width:23%;height:auto;filter:drop-shadow(0 16px 28px rgba(48,79,66,.22));}
+
+  .cru{display:flex;align-items:center;gap:1.2rem 1.6rem;flex-wrap:wrap;}
+  .center .cru{justify-content:center;}
+  .cru__k{font-family:var(--disp);font-size:clamp(1.4rem,1rem+1.4vw,2.2rem);margin:0;color:var(--groen);line-height:1.02;}
+  .cru__s{font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.82rem;opacity:.85;margin:.25rem 0 0;max-width:40ch;}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--groen);color:var(--offwhite);font-family:var(--head);font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;padding:.75rem 1.5rem;border-radius:999px;text-decoration:none;white-space:nowrap;}
+
+  .crurow{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(1.6rem,3.5vw,3.6rem);align-items:center;}
+  .crurow .cru{flex-direction:column;align-items:flex-start;gap:.9rem;}
+  .sp{height:1rem;} .sp2{height:1.5rem;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  const P = ['mango-pineapple','banana-apple','strawberry-apple','banana-peach'];
+  const bags = () => `<div class="bags">${P.map(s=>`<img src="/froozy/assets/packshots/${s}.webp" alt="Froozy ${s}">`).join('')}</div>`;
+  const titleOne = `<h2 class="title">Iedereen kent fruit. Niemand kent het zo crrrunchy.</h2><p class="tagline">Een snack zonder troep, geen geheimen in de ingrediënten, alleen 2 fruitsoorten.</p>`;
+  const INTRO = `<span class="lead">Dit is Froozy.</span> Neem echt, rijp fruit. Haal er precies één ding uit: het water. En dan gebeurt er iets wonderlijks. De smaak wordt intenser, het fruit luchtig, en dan komt het: een crrrunch die je nog nooit van fruit hoorde. Geen suiker, geen aroma's, geen eindeloze ingrediëntenlijst vol onzin. Gewoon twee soorten fruit, meer niet. Snacken zónder schuldgevoel, met een knapperige verrassing bij elke hap. Benieuwd hoe knapperig fruit écht kan zijn? Stop een zakje in je tas voor onderweg, op kantoor of na het sporten, en ontdek het zelf.`;
+  const intro = () => `<p class="intro">${INTRO}</p>`;
+  const btn = `<a class="btn" href="#">Bestel direct →</a>`;
+  const cruInline = `<div class="cru"><div><p class="cru__k">Klaar voor de crrrunch?</p><p class="cru__s">Eén hap en de smaak neemt het over.</p></div>${btn}</div>`;
+  const band = (cls, inner) => `<div class="band ${cls}"><div class="in">${inner}</div></div>`;
+
+  const V = [
+    ['A · EXTRA — huidige opzet behouden, alleen de tekst gefixt (titel voluit, “Dit is Froozy” vet, intro breed)',
+      band('pink', `<div class="crurow"><div class="cru"><div><p class="cru__k">Klaar voor de crrrunch?</p><p class="cru__s">Eén hap en de smaak neemt het over. Bestel en ervaar de crrrunch.</p></div>${btn}</div>${bags()}</div>`)
+      + band('', `${titleOne}<div class="sp"></div>${intro()}`)],
+
+    ['1 · Roze zak-balk boven · titel + brede tekst + crrrunch-CTA eronder',
+      band('pink', bags()) + band('', `${titleOne}<div class="sp"></div>${intro()}<div class="sp2"></div>${cruInline}`)],
+
+    ['2 · Titel + brede tekst boven · roze zak-balk onder met CTA',
+      band('', `${titleOne}<div class="sp"></div>${intro()}`)
+      + band('pink center', `${bags()}<div class="sp2"></div><div class="cru"><p class="cru__k">Klaar voor de crrrunch?</p>${btn}</div>`)],
+
+    ['3 · Titel boven (gecentreerd) · roze zak-balk in het midden · brede tekst + CTA onder',
+      band('center', titleOne) + band('pink', bags())
+      + band('center', `${intro()}<div class="sp2"></div>${btn}`)],
+
+    ['4 · Roze zak-balk boven · titel + “Klaar voor de crrrunch?” als kop · brede tekst + CTA',
+      band('pink', bags())
+      + band('', `${titleOne}<p class="cru__k" style="margin:.5rem 0 0">Klaar voor de crrrunch?</p><div class="sp"></div>${intro()}<div class="sp2"></div>${btn}`)],
+
+    ['5 · Titel + brede tekst boven (gecentreerd) · roze zak-balk met crrrunch-CTA als finale',
+      band('center', `${titleOne}<div class="sp"></div>${intro()}`)
+      + band('pink center', `<p class="cru__k">Klaar voor de crrrunch?</p><div class="sp"></div>${bags()}<div class="sp2"></div>${btn}`)],
+  ];
+  document.getElementById('app').innerHTML = V.map(([name, html]) =>
+    `<div class="lbl"><h1>${name}</h1></div><section class="ver">${html}</section>`).join('');
+</script>
+</body>
+</html>

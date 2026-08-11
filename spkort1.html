@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · Ons verhaal · 1 Split</title>
+<style>
+  @font-face{font-family:'Antonio';src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap;}
+  @font-face{font-family:'Antonio';src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
+  @font-face{font-family:'Amber Whiskey';src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2');font-weight:400;font-display:swap;}
+  :root{--groen:#304F42;--offwhite:#FFF8E7;--straw:#F6B5C5;--mango:#FFF065;--peach:#F9BB7A;
+    --head:'Antonio',system-ui,sans-serif;--disp:'Amber Whiskey','Antonio',serif;--body:'Inter','Segoe UI',system-ui,sans-serif;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--offwhite);color:var(--groen);font-family:var(--body);line-height:1.5;}
+  img{display:block;max-width:100%;}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem clamp(1rem,4vw,3rem);}
+  .nav__logo{height:clamp(58px,6vw,82px);width:auto;transform:rotate(-8deg);filter:drop-shadow(0 8px 14px rgba(48,79,66,.16));}
+  .nav__menu{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);background:var(--offwhite);border-radius:999px;
+    padding:.5rem 1.3rem;box-shadow:0 8px 20px rgba(48,79,66,.13);font-family:var(--head);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;font-weight:600;}
+  .nav__menu a{color:var(--groen);text-decoration:none;}
+  .nav__cta{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;
+    background:var(--groen);color:var(--offwhite);padding:.55rem 1.15rem;border-radius:999px;text-decoration:none;}
+  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.75rem;opacity:.7;margin:0;}
+  .eyebrow::before{content:"";width:.4rem;height:.4rem;background:currentColor;transform:rotate(45deg);}
+  @media(max-width:760px){.nav__menu{display:none;}}
+
+  /* ---- Split: foto links, korte tekst rechts ---- */
+  .s{min-height:82vh;display:grid;place-items:center;padding:clamp(1.5rem,4vw,3rem);}
+  .s__in{width:min(100% - 2rem,1120px);display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+  .s__photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px -30px rgba(48,79,66,.42);}
+  .s__photo img{width:100%;height:100%;object-fit:cover;}
+  .s__photo::after{content:"";position:absolute;left:-14px;bottom:-14px;width:64px;height:64px;background:var(--peach);border-radius:50%;z-index:-1;}
+  .s__name{font-family:var(--disp);font-weight:400;font-size:clamp(1.9rem, 1.2rem + 2.1vw, 2.9rem);line-height:1;letter-spacing:.006em;margin:.75rem 0 1.1rem;text-transform:uppercase;}
+  .s__body{font-size:clamp(1rem, 0.95rem + 0.3vw, 1.18rem);line-height:1.62;max-width:46ch;margin:0;}
+  .s__mission{display:inline-block;margin-top:1.4rem;font-family:var(--head);font-weight:700;font-size:clamp(1.05rem, 0.9rem + 0.5vw, 1.35rem);
+    color:var(--groen);border-bottom:3px solid var(--peach);padding-bottom:3px;}
+  @media(max-width:760px){.s__in{grid-template-columns:1fr;gap:2rem;}.s__photo{max-width:340px;margin:0 auto;}}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <img class="nav__logo" src="/froozy/assets/logos/sticker-duotone.svg" alt="Froozy" />
+    <div class="nav__menu"><a href="#">Dit is Froozy</a><a href="#">Smaken</a><a href="#">Ons verhaal</a><a href="#">Contact</a></div>
+    <a class="nav__cta" href="#">Bestel</a>
+  </nav>
+
+  <section class="s">
+    <div class="s__in">
+      <figure class="s__photo" style="margin:0;"><img src="/froozy/assets/gen/story-rooftop.webp" alt="Hanin geniet van een zakje Froozy" /></figure>
+      <div class="s__text">
+        <p class="eyebrow">Ons verhaal</p>
+        <h1 class="s__name">Hoi, ik ben Hanin</h1>
+        <p class="s__body">Samen met mijn man begon ik Froozy, aan onze keukentafel. Ik zocht een snack die mijn kids én lekker én gezond vonden. Die bestond niet, dus maakte ik hem zelf: puur fruit, het water eruit, de crrrunch erin. Geen suiker, geen gedoe.</p>
+        <span class="s__mission">Lekker en gezond horen gewoon samen.</span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="nl">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Froozy · 10 layouts (punten)</title>
+<style>
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Antonio'; src:url('/froozy/fonts/Antonio-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Amber Whiskey'; src:url('/froozy/fonts/AmberWhiskeyAged.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  :root{
+    --groen:#304F42; --offwhite:#FFF8E7; --strawberry:#F6B5C5;
+    --pastel-strawberry:color-mix(in srgb,#F6B5C5 42%,#FFF8E7);
+    --head:'Antonio',system-ui,sans-serif; --disp:'Amber Whiskey','Antonio',serif; --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#efe7cf;color:var(--groen);font-family:var(--body);}
+  .lbl{max-width:1180px;margin:2.4rem auto 0.5rem;padding:0 1.5rem;}
+  .lbl h1{font-family:var(--head);text-transform:uppercase;letter-spacing:.12em;font-size:.9rem;margin:0;}
+  .ver{max-width:1180px;margin:0 auto;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -46px rgba(48,79,66,.5);background:var(--offwhite);}
+  .inner{padding:clamp(1.6rem,3vw,2.6rem) clamp(1.6rem,3.5vw,3rem);min-height:440px;display:flex;flex-direction:column;justify-content:center;gap:clamp(1rem,2.5vw,1.8rem);}
+  img{display:block;}
+
+  .title{font-family:var(--disp);font-weight:400;color:var(--groen);line-height:1.02;letter-spacing:.012em;margin:0;font-size:clamp(1.6rem,1rem+2.4vw,3rem);}
+  .title .punch{display:inline-block;}
+  .title.big{font-size:clamp(1.9rem,1rem+3vw,3.4rem);}
+
+  /* hook + punten (i.p.v. de lange balk) */
+  .hook{font-family:var(--body);font-size:1.04rem;line-height:1.55;color:var(--groen);opacity:.88;margin:0;max-width:46ch;}
+  .points{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.55rem 1.15rem;}
+  .points li{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--head);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;color:var(--groen);}
+  .points li::before{content:"";width:.44rem;height:.44rem;background:var(--groen);transform:rotate(45deg);opacity:.82;flex:none;}
+  .mid .hook{margin-left:auto;margin-right:auto;}
+  .mid .points{justify-content:center;}
+
+  .packs{display:flex;gap:clamp(.5rem,1.5vw,1.2rem);align-items:flex-end;justify-content:center;
+    background:var(--pastel-strawberry);border-radius:22px;padding:clamp(1rem,2.4vw,1.7rem) clamp(1.1rem,2.8vw,2rem);}
+  .packs img{width:100%;height:auto;filter:drop-shadow(0 14px 22px rgba(48,79,66,.22));}
+  .packs.row img{max-width:23%;}
+  .packs.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+  .packs.grid2 img{max-width:100%;}
+  .packs.fan,.packs.arc{background:none;padding:0;}
+
+  .two{display:grid;grid-template-columns:1.4fr .9fr;gap:clamp(1.4rem,3vw,3rem);align-items:start;}
+  .two2{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.4rem,3vw,3rem);align-items:center;}
+  .mid{text-align:center;}
+  .mid .title{margin-left:auto;margin-right:auto;}
+
+  .packs.fan{gap:0;justify-content:center;}
+  .packs.fan img{max-width:30%;margin-left:-7%;}
+  .packs.fan img:nth-child(1){transform:rotate(-9deg);} .packs.fan img:nth-child(2){transform:rotate(-3deg);}
+  .packs.fan img:nth-child(3){transform:rotate(3deg);} .packs.fan img:nth-child(4){transform:rotate(9deg);}
+  .hero{display:flex;align-items:flex-end;gap:1rem;background:var(--pastel-strawberry);border-radius:22px;padding:clamp(1rem,2.4vw,1.7rem);}
+  .hero .big{max-width:52%;} .hero .mini{display:flex;flex-direction:column;gap:.5rem;flex:1;}
+  .hero .mini img{width:70%;}
+  .packs.arc img{max-width:20%;}
+  .packs.arc img:nth-child(1){transform:translateY(14px) rotate(-11deg);} .packs.arc img:nth-child(2){transform:translateY(-2px) rotate(-4deg);}
+  .packs.arc img:nth-child(3){transform:translateY(-2px) rotate(4deg);} .packs.arc img:nth-child(4){transform:translateY(14px) rotate(11deg);}
+
+  .row-top .packs{margin-bottom:.4rem;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+  const P = ['mango-pineapple','banana-apple','strawberry-apple','banana-peach'];
+  const packs = (cls='row') => `<div class="packs ${cls}">${P.map(s=>`<img src="/froozy/assets/packshots/${s}.webp" alt="Froozy ${s}">`).join('')}</div>`;
+  const title = (big=false) => `<h2 class="title${big?' big':''}">Iedereen kent fruit.<br>Niemand kent het zó crrrunchy.<br><span class="punch">Dit is dé Froozy snack.</span></h2>`;
+  const HOOK = 'Neem echt, rijp fruit — haal alleen het water eruit en er gebeurt iets wonderlijks: een crrrunch die je nog nooit van fruit hoorde. Snacken zónder schuldgevoel, boordevol smaak.';
+  const PTS = ['100% echt fruit','Geen suiker','Rijk aan vezels','100% vegan'];
+  const blurb = () => `<p class="hook">${HOOK}</p><ul class="points">${PTS.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+  const heroPacks = () => `<div class="hero"><img class="big" src="/froozy/assets/packshots/${P[2]}.webp" alt=""><div class="mini">${[0,1,3].map(i=>`<img src="/froozy/assets/packshots/${P[i]}.webp" alt="">`).join('')}</div></div>`;
+
+  const V = [
+    ['01 · Zakken boven · titel links, punten rechts', `<div class="row-top">${packs('row')}</div><div class="two"><div>${title()}</div><div>${blurb()}</div></div>`],
+    ['02 · Titel groot gecentreerd · zakken eronder · punten onder', `<div class="mid">${title(true)}${packs('row')}${blurb()}</div>`],
+    ['03 · Titel + punten links · zakken 2×2 rechts', `<div class="two2"><div>${title()}<div style="height:.6rem"></div>${blurb()}</div>${packs('grid2')}</div>`],
+    ['04 · Titel full-width · zakken links + punten rechts', `<div class="mid">${title(true)}</div><div class="two">${packs('row')}<div>${blurb()}</div></div>`],
+    ['05 · Zakken 2×2 links · statement rechts', `<div class="two2">${packs('grid2')}<div>${title()}<div style="height:.6rem"></div>${blurb()}</div></div>`],
+    ['06 · Speelse schuine zakken · titel links', `<div class="two"><div>${title()}<div style="height:.6rem"></div>${blurb()}</div><div style="align-self:center">${packs('fan')}</div></div>`],
+    ['07 · Eén zak uitgelicht · statement rechts', `<div class="two"><div style="align-self:center">${heroPacks()}</div><div>${title()}<div style="height:.6rem"></div>${blurb()}</div></div>`],
+    ['08 · Titel links · zakken rechts · punten breed onder', `<div class="two"><div>${title()}</div><div style="align-self:center">${packs('row')}</div></div>${blurb()}`],
+    ['09 · Zakken als menu-rij · statement gecentreerd eronder', `<div class="mid">${packs('row')}${title(true)}${blurb()}</div>`],
+    ['10 · Zakken in een boog · titel eronder', `<div class="mid">${packs('arc')}${title(true)}${blurb()}</div>`],
+  ];
+  document.getElementById('app').innerHTML = V.map(([name, html]) =>
+    `<div class="lbl"><h1>${name}</h1></div><section class="ver"><div class="inner">${html}</div></section>`).join('');
+</script>
+</body>
+</html>
